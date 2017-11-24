@@ -1,0 +1,58 @@
+.card{
+    background-color: #f4f4f4;
+    border: 1px solid #F9EBDB;
+    color: #969696;
+    padding: 8px;
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+}
+.card-main{
+    height: 165px;
+}
+.card-header{
+    font-size: 1.5em;
+}
+.card-header-accounts{
+    color: #7BCE19;
+    font-size: 1.5em;
+}
+.card-card{
+    padding: 10px;
+    border: 1px solid #e3e3e3;
+    background-color: #FCFCFC;
+}
+.card-footer{
+    margin-top: 4px;
+    height: 26px;
+    padding: 8px;
+    border-top: 1px dotted #ededed;
+    cursor: pointer;
+}
+.other-header{
+    color: #969696;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+.mma-account{
+    font-weight: 700;
+}
+.card-buttons{
+    margin-top: 8px;
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+    position: relative;
+}
+.vape-required{
+    color: #f23029;
+    position: absolute;
+    right: 0;
+    margin-right: 12px;
+}
+.card-button{
+    position: relative;
+}

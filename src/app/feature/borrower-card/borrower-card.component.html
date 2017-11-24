@@ -1,0 +1,125 @@
+<div class="card" id="card-dashboard">
+    <div class="row">
+        <div class="col-sm-12">            
+    <!-- card header (never collapses-->
+            <div id="cardHeader" class="row">
+                <div class="col-sm-12">
+                    <span class="card-header pull-left"><strong>{{callType}}</strong> <i>with</i> <strong>{{callerName}}</strong> <i>about</i> <strong>{{borrower.firstName}} {{borrower.middleInitial}} {{borrower.lastName}}</strong><a href="#"> (Change)</a></span> 
+                    <span class="card-header-accounts pull-right">
+                        <span>
+                            <strong>{{borrower.ssn | maskSsn}}</strong>
+                        </span>
+                        <span *ngFor='let acct of borrower.accounts'>
+                            {{acct.type}}: <strong>{{acct.accountId}}</strong>
+                        </span>
+                    </span>                    
+                </div>
+            </div>
+            <!-- card main (collapsing part)-->
+            <div class="row card-main">
+                <div class="col-sm-6">
+                  <div class="col-sm-8">
+                      <div class="card-card">
+                          <form>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label for="addressLine1">Address Line 1</label>
+                                      <input type="text" name="addressLine1" id="txtaddressLine1" class="form-control" placeholder="Address Line 1" [(ngModel)]='borrower.addresses[0].addressLine1'>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="addressLine1">Address Line 2</label>
+                                      <input type="text" name="addressLine2" id="txtaddressLine2" class="form-control" placeholder="Address Line 2" [(ngModel)]="borrower.addresses[0].addressLine2">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-lg-6">
+                                      <label for="addressCity">City</label>
+                                      <input type="text" name="addressCity" id="txtAddressCity" class="form-control" placeholder="City" [(ngModel)]="borrower.addresses[0].city">
+                                  </div>
+                                  <div class="col-lg-2">
+                                      <label for="addressZip">State</label>
+                                      <input type="text" name="address" id="txtAddressState" class="form-control" placeholder="State" [(ngModel)]="borrower.addresses[0].state">
+                                  </div>
+                                  <div class="col-lg-3">
+                                      <label for="addressZip">Zip</label>
+                                      <input type="text" name="addressZip" id="txtAddressZip" class="form-control" placeholder="Zip" [(ngModel)]="borrower.addresses[0].zip">
+                                  </div>                            
+                              </div> 
+                          </form>                       
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="card-card">
+                          <form>
+                              <div class="row">
+                                  <div class="col-lg-12">
+                                      <label for="addressLine1">Primary Phone</label>
+                                      <div class="pull-right"> 
+                                          <strong>CPC</strong> <input type="checkbox" name="cpcCheckbox" class="form-check-input" [checked]="borrower.phones[0].cpc" [(ngModel)]="borrower.phones[0].cpc">
+                                          <i title="Phone does not have cell phone consent" class="fa fa-exclamation-triangle text-danger" *ngIf="!borrower.phones[0].cpc"></i>
+                                      </div>
+                                      <input type="text" name="addressLine1" class="form-control" id="txtaddressLine1" placeholder="Address Line 1" [(ngModel)]="borrower.phones[0].phoneNumber">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-lg-12">
+                                      <label for="addressLine1">Primary Email</label>
+                                      <input type="text" name="addressLine2" id="txtaddressLine2" class="form-control" placeholder="Address Line 2" [(ngModel)]="borrower.emails[0].emailAddress">
+                                  </div>
+                              </div>
+                          </form>                          
+                      </div>
+                  </div>                  
+                </div>
+                <div class="col-sm-6">
+                    <div class="card-card">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <span class="other-header">Other Information
+                                    <span class="pull-right">
+                                        <i title="Borrower is NOT signed up for E-correspondence" class="fa fa-tree"></i> 
+                                        <i class="fa fa-dollar fa-stack"></i> 
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">DOB: <strong>{{borrower.dob}}</strong></div>
+                            <div class="col-lg-6">School name: <strong>{{borrower.schoolName}} ({{borrower.schoolCode}})</strong></div>                                
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">Enrollment Status: <strong>{{borrower.enrollmentStatus}}</strong></div>
+                            <div class="col-lg-6">Graduation Date: <strong>{{borrower.graduationDate}}</strong></div>                                
+                        </div>                        
+                        <div class="row">
+                            <div class="col-lg-6">MMA Account: <span class="mma-account"><a href="#">{{borrower.mmaAccountId}}</a></span></div>                                
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="pull-right card-buttons">
+                                <div class="btn btn-xs btn-primary">Go to Demographics</div> 
+                                <div class="btn btn-xs btn-success">Save Changes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                                                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- card footer (collapse controller/never collapses-->
+            <div class="text-center card-footer" id="cardFooter">
+                <i class="fa fa-arrow-up card-button" id="cardFooterIcon" aria-hidden="true"></i>
+                <span class="vape-required" id="spanVerify" *ngIf='vape'>
+                    <i title="This borrower's demographic information needs to be verified" class="fa fa-exclamation-triangle text-danger"></i>
+                    <span id="lblVerify">
+                        This borrower's demographic information needs to be verified.
+                    </span>
+                    <div class="btn btn-xs btn-default">Verified</div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

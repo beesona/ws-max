@@ -1,11 +1,10 @@
 .card{
-    background-color: #f4f4f4;
-    border: 1px solid #F9EBDB;
-    color: #969696;
+    margin: 20px;
+    margin-left: 120px;
+    background-color: #f75b13;
+    color: #fff;
     padding: 8px;
-    position: fixed;
-    width: 100%;
-    z-index: 9;
+    z-index: 0;
 }
 .card-main{
     height: 165px;
@@ -19,8 +18,7 @@
 }
 .card-card{
     padding: 10px;
-    border: 1px solid #e3e3e3;
-    background-color: #FCFCFC;
+    background-color: #f75b13;
 }
 .card-footer{
     margin-top: 4px;
@@ -30,7 +28,7 @@
     cursor: pointer;
 }
 .other-header{
-    color: #969696;
+    color: #FFF;
     font-weight: 700;
     font-size: 1.2em;
 }
@@ -56,3 +54,32 @@
 .card-button{
     position: relative;
 }
+
+
+.left-nav-items{
+    padding-left: 0px;
+}
+.navbar-fixed-left {
+    border: 0px !important;
+    background-color: #333;
+    width: 100px;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .left-nav-item{
+      margin: 0px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+        color: white;
+        list-style: none;
+  }
+  .left-nav-item:hover{
+    background-color: #fff;
+    background-color: #333;
+}
+  .left-nav-item > a {
+      color: white;
+  }

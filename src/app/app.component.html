@@ -1,7 +1,2 @@
-<div style="width: 100%; background-color: #000; color: white;">
-    <span style="font-size: 2em; margin-left: 10px;"><i class="fa fa-user-circle" style="color: #4286f4;" aria-hidden="true"></i> Workspace</span>
-    <div class="pull-right" style="padding-top: 6px;margin-right: 10px; color: black;">
-        <input type="text" maxlength="9" placeholder="SSN/ACCOUNT #" [(ngModel)]='searchSsn' /> <button style="height: 26px; padding-top: 2px;" class="btn btn-success" (click)='search()'>Search</button>
-    </div>
-</div>
+<app-header [borrower]='borrower'></app-header>
 <app-borrower-card [borrower]='borrower'></app-borrower-card>

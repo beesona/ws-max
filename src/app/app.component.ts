@@ -15,13 +15,21 @@ export class AppComponent {
 
   //generate borrower data on load during development
   ngOnInit(): void {
-    this.borrower = this._borrowerDemographicsService.getBorrowerDemographics(this.searchSsn);
-    this.title = this.borrower.lastName + ', ' + this.borrower.firstName + '(' + this.borrower.ssn.substr(7,4) + ')';
+    this.borrower = this._borrowerDemographicsService.getBorrowerDemographics(this.searchSsn).subscribe(
+      borrower => {
+        this.borrower = borrower;
+        this.title = this.borrower.lastName + ', ' + this.borrower.firstName + '(' + this.borrower.ssn.substr(7,4) + ')';
+      }
+    )
   }
 
   search(): void {
-    this.borrower = this._borrowerDemographicsService.getBorrowerDemographics(this.searchSsn);
-    this.title = this.borrower.lastName + ', ' + this.borrower.firstName + '(' + this.borrower.ssn.substr(7,4) + ')';
+    this.borrower = this._borrowerDemographicsService.getBorrowerDemographics(this.searchSsn).subscribe(
+      borrower => {
+        this.borrower = borrower;
+        this.title = this.borrower.lastName + ', ' + this.borrower.firstName + '(' + this.borrower.ssn.substr(7,4) + ')';
+      }
+    )
   }
 
 }

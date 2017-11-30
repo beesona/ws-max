@@ -8,6 +8,7 @@ import { BorrowerCardComponent } from './feature/borrower-card/borrower-card.com
 import { PrimaryContactFormComponent } from './feature/demographics/primary-contact-form/primary-contact-form.component';
 import { BorrowerDemographicsService } from './services/borrower/borrower-demographics.service';
 import { MaskSsnPipe } from './shared/mask-ssn.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MaskSsnPipe } from './shared/mask-ssn.pipe';
   imports: [
     BrowserModule,
     AlertModule.forRoot(),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [BorrowerDemographicsService],
   bootstrap: [AppComponent]

@@ -1,0 +1,58 @@
+.right-bar-fixed {
+    right: 0px;
+    border: 0px !important;
+    background-color: #6686ba;
+    width: 280px;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
+    z-index: 1;
+    top: 50px;
+    padding: 8px;
+    overflow-y: scroll;
+  }
+  .right-bar-handle{
+    right: 280px;
+    border: 0px !important;
+    background-color: #516b96;
+    width: 16px;
+    position: fixed;
+    height: 100%;
+    z-index: 2;
+    top: 50px;
+    color: #7e9ed3;  
+  }
+
+  @media only screen and (max-width: 1010px) {
+    .right-bar-fixed {
+        display: none;
+    }
+    .right-bar-handle{
+        right: 0px;
+    }
+}
+.right-bar-title{
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.right-bar-notes{
+    width: 100%;
+}
+.task-list{
+    list-style: none;
+    padding: 0px;
+    
+}
+.well{
+    padding:4px;
+}
+
+.task-list-item{
+    padding: 3px;
+    margin: 3px;
+    width: 98%;
+}
+.task-item-info{
+    font-size: 1.6em;
+}

@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BorrowerCardComponent } from './feature/borrower-card/borrower-card.component';
 import { PrimaryContactFormComponent } from './feature/demographics/primary-contact-form/primary-contact-form.component';
 import { BorrowerDemographicsService } from './services/borrower/borrower-demographics.service';
-import { MaskSsnPipe } from './shared/mask-ssn.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './feature/dashboard/dashboard.component';
 import { NavigationModule } from './feature/navigation/navigation.module';
@@ -17,7 +16,6 @@ import { NavigationModule } from './feature/navigation/navigation.module';
     AppComponent,
     BorrowerCardComponent,
     PrimaryContactFormComponent,
-    MaskSsnPipe,
     DashboardComponent
   ],
   imports: [

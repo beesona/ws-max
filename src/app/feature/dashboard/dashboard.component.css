@@ -1,3 +1,25 @@
-.db-widget{
+.db-main{
+    background-color: #fff;
+    margin-top: 50px;
+    margin-left: 100px;
+    padding: 10px;
+    margin-right: 295px;
+}
+
+.demo-widget{
     background-color: red;
+}
+
+@media only screen and (max-width: 1010px) {
+    .db-main {
+        margin-right: 0px;
+    }
+}
+
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.row > div{
+    padding: 10px;
 }

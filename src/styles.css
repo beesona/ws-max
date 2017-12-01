@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.theme-color-red{
+    background-color: #c62323;
+    color: #fff;
+}
+.theme-color-green{
+    background-color: #33af45;
+    color: #fff;
+}
+.theme-color-lightblue{
+    background-color: #6686ba;
+    color: #FFF;
+}

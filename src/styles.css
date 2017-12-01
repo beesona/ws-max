@@ -4,10 +4,20 @@
     color: #fff;
 }
 .theme-color-green{
-    background-color: #33af45;
+    background-color: #F9CE77;
     color: #fff;
 }
 .theme-color-lightblue{
     background-color: #6686ba;
     color: #FFF;
+}
+.theme-color-grey{
+    background-color: #D4D4D4;
+    color: #505050;
+}
+.widget-title{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #505050;
 }

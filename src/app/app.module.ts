@@ -9,7 +9,8 @@ import { PrimaryContactFormComponent } from './feature/demographics/primary-cont
 import { BorrowerDemographicsService } from './services/borrower/borrower-demographics.service';
 import { MaskSsnPipe } from './shared/mask-ssn.pipe';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './feature/navigation/header/header-component.component';
+import { DashboardComponent } from './feature/dashboard/dashboard.component';
+import { NavigationModule } from './feature/navigation/navigation.module';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,14 @@ import { HeaderComponent } from './feature/navigation/header/header-component.co
     BorrowerCardComponent,
     PrimaryContactFormComponent,
     MaskSsnPipe,
-    HeaderComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AlertModule.forRoot(),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NavigationModule
   ],
   providers: [BorrowerDemographicsService],
   bootstrap: [AppComponent]

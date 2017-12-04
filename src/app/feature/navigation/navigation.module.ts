@@ -4,9 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header-component.component';
 import { LeftNavComponent } from './left-nav/left-nav.component';
-import { MaskSsnPipe } from '../../shared/mask-ssn.pipe';
 import { RightBarComponent } from './right-bar/right-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { MaskSsnPipe } from '../../shared/mask-ssn.pipe';
 
 @NgModule({
   imports: [

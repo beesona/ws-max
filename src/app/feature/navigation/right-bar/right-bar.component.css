@@ -1,7 +1,7 @@
 .right-bar-fixed {
     right: 0px;
     border: 0px !important;
-    background-color: #6686ba;
+    background-color: #333;
     width: 280px;
     position: fixed;
     border-radius: 0;
@@ -14,7 +14,7 @@
   .right-bar-handle{
     right: 280px;
     border: 0px !important;
-    background-color: #516b96;
+    background-color: #414141;
     width: 16px;
     position: fixed;
     height: 100%;

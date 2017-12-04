@@ -10,6 +10,8 @@ import { PrimaryContactFormComponent } from './feature/demographics/primary-cont
 import { BorrowerDemographicsService } from './services/borrower/borrower-demographics.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './feature/dashboard/dashboard.component';
+import { WidgetDirective } from './feature/dashboard/widget.directive';
+import { WidgetComponent } from './feature/dashboard/widget.component';
 import { NavigationModule } from './feature/navigation/navigation.module';
 
 const appRoutes: Routes = [
@@ -27,12 +29,13 @@ const appRoutes: Routes = [
     AppComponent,
     BorrowerCardComponent,
     PrimaryContactFormComponent,
-    DashboardComponent
+    DashboardComponent,
+    WidgetDirective
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
     AlertModule.forRoot(),
@@ -41,6 +44,7 @@ const appRoutes: Routes = [
     NavigationModule
   ],
   providers: [BorrowerDemographicsService],
+  entryComponents: [PrimaryContactFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

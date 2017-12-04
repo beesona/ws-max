@@ -1,4 +1,4 @@
-<div class="right-bar-fixed">
+<div class="right-bar-fixed" [ngClass]="{ 'show-right' : showRight }">
     <div class="right-bar-notes-container">
         <span class="right-bar-title">
           Interaction Tasks
@@ -61,4 +61,4 @@
 
 
 </div>
-<div class="right-bar-handle"></div>
+<div class="right-bar-handle" (click)="toggleRight()"></div>

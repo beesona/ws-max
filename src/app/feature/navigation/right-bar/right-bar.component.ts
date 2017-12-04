@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightBarComponent implements OnInit {
 
+  showRight: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleRight(): void {
+
+  }
 }

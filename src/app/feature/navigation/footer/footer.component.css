@@ -7,11 +7,22 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-    padding-top: 8px;
 }
 
 @media only screen and (max-width: 1010px) {
-    .footer {
-        padding-right: 26px;
+    .btn-wrapup{
+        right: 16px !important;        
     }
+}
+.btn-wrapup{
+    position: fixed;
+    right: 295px;
+    height: 50px;
+    border: none;
+    border-radius: 0px;
+    font-size: 1.6em;  
+    padding-top: 10px;
+    padding-bottom: 0px; 
+    padding-left: 16px; 
+    padding-right: 16px;
 }

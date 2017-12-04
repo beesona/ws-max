@@ -21,3 +21,6 @@
     font-weight: 600;
     color: #505050;
 }
+.form-control{
+    border-radius: 0px !important;
+}

@@ -28,3 +28,19 @@
   .left-nav-item > a:hover {
       color: #fff;
   }
+
+  .fa{
+      font-size: 2em;
+  }
+
+  @media only screen and (max-width: 1010px) {
+    .fa{
+        font-size: 1.5em;
+    }
+    .link-title{
+        display: none;
+    }
+    .navbar-fixed-left {
+        width: 40px;
+    }
+}

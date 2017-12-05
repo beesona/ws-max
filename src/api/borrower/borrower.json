@@ -26,20 +26,23 @@
     "addressLine2": "APT 2117",
     "city": "Denver",
     "state": "CO",
-    "zip": "80223"
+    "zip": "80223",
+    "priority": 0
   }
 ],
 "phones": [
   {
     "phoneNumber": "7192142446",
     "phoneType": "primary",
-    "cpc": true
+    "cpc": true,
+    "priority": 0
   }
 ],
 "emails": [
   {
     "emailAddress": "beesona@gmail.com",
-    "emailType": "primary"
+    "emailType": "primary",
+    "priority": 0
   }
 ],
 "ecorr": true,

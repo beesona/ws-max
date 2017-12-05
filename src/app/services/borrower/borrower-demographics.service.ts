@@ -11,10 +11,12 @@ import { IBorrower } from '../../models/borrower';
 export class BorrowerDemographicsService {
 
   private _borrowerUrl = './api/borrower/borrower.json';
+  borrower: any;
   constructor(private _http: HttpClient) { }
 
   getBorrowerDemographics(ssn: string): Observable<any>{
-    return this._http.get<any[]>(this._borrowerUrl + '').catch(this.handleError);
+    this.borrower = this._http.get<any[]>(this._borrowerUrl + '').catch(this.handleError);
+    return this.borrower;
   }
 
   private handleError(err: HttpErrorResponse){

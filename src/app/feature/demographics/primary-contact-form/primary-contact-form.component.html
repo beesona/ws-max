@@ -4,31 +4,32 @@
 </div>
 <div class="col-sm-8">
     <div class="card-card">
-        <form>
+        <form [formGroup]="demographicsForm" (ngSubmit)="saveDemographics(demographicsForm.value)" novalidate>
             <div class="row">
                 <div class="col-md-6">
                     <label for="addressLine1">Address Line 1</label>
-                    <input type="text" name="addressLine1" id="txtaddressLine1" class="form-control" placeholder="Address Line 1" value="{{borrower?.addresses[0].addressLine1}}">
+                    <input type="text" formControlName="addressLine1" name="addressLine1" id="addressLine1" class="form-control" placeholder="Address Line 1" value="">
                 </div>
                 <div class="col-md-6">
                     <label for="addressLine1">Address Line 2</label>
-                    <input type="text" name="addressLine2" id="txtaddressLine2" class="form-control" placeholder="Address Line 2" value="#2117">
+                    <input type="text" formControlName="addressLine2" id="txtaddressLine2" class="form-control" placeholder="Address Line 2" value="#2117">
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
                     <label for="addressCity">City</label>
-                    <input type="text" name="addressCity" id="txtAddressCity" class="form-control" placeholder="City" value="Denver">
+                    <input type="text" formControlName="city" id="txtAddressCity" class="form-control" placeholder="City" value="Denver">
                 </div>
                 <div class="col-lg-2">
                     <label for="addressZip">State</label>
-                    <input type="text" name="addressZip" id="txtAddressZip" class="form-control" placeholder="State" value="CO">
+                    <input type="text" formControlName="state" id="txtAddressZip" class="form-control" placeholder="State" value="CO">
                 </div>
                 <div class="col-lg-3">
                     <label for="addressZip">Zip</label>
-                    <input type="text" name="addressZip" id="txtAddressZip" class="form-control" placeholder="Zip" value="80202">                                
+                    <input type="text" formControlName="zip" id="txtAddressZip" class="form-control" placeholder="Zip" value="80202">                                
                 </div>                            
             </div> 
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>                       
     </div>
 </div>

@@ -1,0 +1,61 @@
+<div class="history-note-widget" *ngIf="data?.isWidget">
+    <div class="row">
+      <div class="col-md-12">
+          <span class="widget-title">{{data.title}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>History Notes</h3>
+        <table class="table-responsive table-striped table-hover table-bordered">
+          <thead>
+            <th>Create Date</th>
+            <th>Note Text</th>
+            <th>Note Type</th>
+            <th>History Code</th>
+            <th>System Name</th>
+            <th>User Name</th>
+          </thead>
+          <tr *ngFor="let note of historyNotes">
+            <td>{{note?.NoteDate}}</td>
+            <td>{{note?.NoteText}}</td>
+            <td>{{note?.NoteType}}</td>
+            <td>{{note?.HistoryCode}}</td>
+            <td>{{note?.SystemName}}</td>
+            <td>{{note?.UserName}}</td>     
+          </tr>
+        </table>
+      </div>
+    </div>
+</div>
+
+<div class="history-note-page" *ngIf="!data?.isWidget">
+    <div class="row">
+      <div class="col-md-12">
+          <span class="title"><h3>Recent Activity</h3></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>History Notes</h3>
+        <table class="table-responsive table-striped table-hover table-bordered">
+          <thead>
+            <th>Create Date</th>
+            <th>Note Text</th>
+            <th>Note Type</th>
+            <th>History Code</th>
+            <th>System Name</th>
+            <th>User Name</th>
+          </thead>
+          <tr *ngFor="let note of historyNotes">
+            <td>{{note?.NoteDate}}</td>
+            <td>{{note?.NoteText}}</td>
+            <td>{{note?.NoteType}}</td>
+            <td>{{note?.HistoryCode}}</td>
+            <td>{{note?.SystemName}}</td>
+            <td>{{note?.UserName}}</td>     
+          </tr>
+        </table>
+      </div>
+    </div>
+</div>

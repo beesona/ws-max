@@ -1,4 +1,4 @@
-import { Component, OnInit, Directive, ViewContainerRef, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, Directive, ViewContainerRef, ViewChild, ComponentFactoryResolver, Input } from '@angular/core';
 import { AfterViewInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { WidgetDirective } from './widget.directive';
 import { WidgetComponent } from './widget.component';
@@ -9,6 +9,8 @@ import { MessageService } from '../../services/message.service';
 import { Subscription }   from 'rxjs/Subscription';
 import { BorrowerDemographicsService } from '../../services/borrower/borrower-demographics.service';
 import { IBorrower } from '../../models/borrower';
+import { AccountComponent } from '../account/account.component';
+import { HistoryComponent } from '../history/history.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +23,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   defaultDashboard: boolean = true;
 
   //hardcoded now, but should be returned from a dashboardLayoutService
-  widgetCollection: DashboardWidget[] = [new DashboardWidget(PrimaryContactFormComponent, { Title: 'Demographics', body: 'NA'})];
+  widgetCollection: DashboardWidget[] = [
+    new DashboardWidget(PrimaryContactFormComponent, { title: 'Demographics', isWidget: true}),
+    new DashboardWidget(AccountComponent, { title: 'Account Information', isWidget: true}),
+    new DashboardWidget(HistoryComponent, { title: 'Recent Activity', isWidget: true})
+  ];
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private _borrSvc: BorrowerDemographicsService) { }
 
@@ -32,6 +38,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     if (this._borrSvc.storedBorrower != undefined){
       this.borrower = this._borrSvc.storedBorrower;
       if (this.borrower) {
+        //load widgets that rely on borrower data:
         this.loadWidgets();
       }
     } 
@@ -51,11 +58,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   loadWidgets(): void{
     let viewContainerRef = this.dbw.viewContainerRef;
     viewContainerRef.clear();
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.widgetCollection[0].component);
-
-    let componentRef = viewContainerRef.createComponent(componentFactory);
-    viewContainerRef.createComponent(componentFactory);
-    //(<WidgetComponent>componentRef.instance).data = this.widgetCollection[0].data;
+    this.widgetCollection.forEach( widget => {
+      let componentFactory = this.componentFactoryResolver.resolveComponentFactory(widget.component);
+      let componentRef = viewContainerRef.createComponent(componentFactory);
+      (<WidgetComponent>componentRef.instance).data = widget.data;
+    });
   }
-
 }

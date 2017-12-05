@@ -1,0 +1,43 @@
+[{
+    "NoteText": "ACH ENDED DUE TO ZERO BALANCE AND ANY ALT ACH PMT REMOVED",
+    "NoteType": "L",
+    "HistoryCode": "300",
+    "NoteDate": "2014-09-03T00:02:45",
+    "SystemName": "DEN",
+    "UserName": "ACHREMOVE "
+}, {
+    "NoteText": "B000 C000 LN=5, S&C=11, PMT=43, APD=0, TT=, DLA=03/17/14. LN=1, S&C=11, PMT=30, APD=0, TT=, DLA=03/17/14. LN=2, S&C=11, PMT=41, APD=0, TT=, DLA=03/17/14. LN=3, S&C=11, PMT=119, APD=0, TT=, DLA=03/17/14. LN=4, S&C=11, PMT=48, APD=0, TT=, DLA=03/17/14.",
+    "NoteType": "L",
+    "HistoryCode": "C99",
+    "NoteDate": "2014-03-17T02:28:29",
+    "SystemName": "DEN",
+    "UserName": "LSBATCH   "
+}, {
+    "NoteText": "STATEMENT CREATED (E) for Acct 001039688",
+    "NoteType": "B",
+    "HistoryCode": "ACD",
+    "NoteDate": "2014-03-14T02:44:30",
+    "SystemName": "DEN",
+    "UserName": "SLSWEB-OP "
+}, {
+    "NoteText": "B000 C000 LN=5, S&C=11, PMT=43, APD=0, TT=, DLA=02/17/14. LN=1, S&C=11, PMT=30, APD=0, TT=, DLA=02/17/14. LN=2, S&C=11, PMT=41, APD=0, TT=, DLA=02/17/14. LN=3, S&C=11, PMT=119, APD=0, TT=, DLA=02/17/14. LN=4, S&C=11, PMT=48, APD=0, TT=, DLA=02/17/14.",
+    "NoteType": "L",
+    "HistoryCode": "C99",
+    "NoteDate": "2014-02-17T02:26:50",
+    "SystemName": "DEN",
+    "UserName": "LSBATCH   "
+}, {
+    "NoteText": "STATEMENT CREATED (E) for Acct 001039688",
+    "NoteType": "B",
+    "HistoryCode": "ACD",
+    "NoteDate": "2014-02-11T03:05:12",
+    "SystemName": "DEN",
+    "UserName": "SLSWEB-OP "
+}, {
+    "NoteText": "B000 C000 LN=5, S&C=11, PMT=43, APD=0, TT=, DLA=01/20/14. LN=1, S&C=11, PMT=30, APD=0, TT=, DLA=01/20/14. LN=2, S&C=11, PMT=41, APD=0, TT=, DLA=01/20/14. LN=3, S&C=11, PMT=119, APD=0, TT=, DLA=01/20/14.",
+    "NoteType": "L",
+    "HistoryCode": "C99",
+    "NoteDate": "2014-01-20T02:16:16",
+    "SystemName": "DEN",
+    "UserName": "LSBATCH   "
+}]

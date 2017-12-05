@@ -30,6 +30,11 @@ export class BorrowerDemographicsService {
     })
   }
 
+  clear(){
+    this.storedBorrower = <IBorrower>{};
+    this.borrowerSubject.next(<IBorrower>{});  
+  }
+
   private handleError(err: HttpErrorResponse){
     console.log(err.message)
     return Observable.throw(err.message);

@@ -4,3 +4,8 @@
     background-color: #FCFCFC;
 }
 
+.demo-cont{
+    padding: 2px;
+    background-color: red;
+    border: 1px solid #6d1d1d;
+}

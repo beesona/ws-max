@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BorrowerDemographicsService } from '../../../services/borrower/borrower-demographics.service';
-import { MessageService } from '../../../services/message.service';
+import { MessageService } from '../../../services/message.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription }   from 'rxjs/Subscription';
 import { IAddress } from '../../../models/borrower';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-primary-contact-form',
@@ -12,7 +13,7 @@ import { IAddress } from '../../../models/borrower';
 })
 export class PrimaryContactFormComponent implements OnInit {
   
-
+  @Input() data: any;
   addresses: IAddress[];
   address: IAddress;
   phone: any;
@@ -24,15 +25,21 @@ export class PrimaryContactFormComponent implements OnInit {
   zip: FormControl;
   demographicsForm: FormGroup;
   subscription: Subscription;
+  msgSvcSubscription: Subscription;
 
-  constructor(private _borrSvc: BorrowerDemographicsService, private _msgSvc: MessageService) { }
+  constructor(private _borrSvc: BorrowerDemographicsService,
+    private _msgSvc: MessageService) { }
 
 
   ngOnInit() {
     if (this._borrSvc.storedBorrower != undefined){
       this.addresses = this._borrSvc.storedBorrower.Addresses;
       this.address = this.addresses.find(x => x.Priority === 0);
-    } 
+    }else{
+      if (!!this._msgSvc.storedSearchSsn){
+        this._borrSvc.setBorrowerDemographics(this._msgSvc.storedSearchSsn);
+      }
+    }
     this.subscription = this._borrSvc.borrower$.subscribe(
       borr => {        
         if (borr.Addresses && borr.Addresses.length > 0) {

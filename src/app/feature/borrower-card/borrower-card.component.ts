@@ -16,7 +16,6 @@ export class BorrowerCardComponent implements OnInit {
     set borrower(value:string){
         this._borrower = value;
         //determine primary address, phone, and email
-        console.log('setting borrower...')
     }  
 
   //vape details. this will later be provided by a service

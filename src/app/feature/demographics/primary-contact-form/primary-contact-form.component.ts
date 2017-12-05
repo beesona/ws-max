@@ -3,6 +3,7 @@ import { BorrowerDemographicsService } from '../../../services/borrower/borrower
 import { MessageService } from '../../../services/message.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription }   from 'rxjs/Subscription';
+import { IAddress } from '../../../models/borrower';
 
 @Component({
   selector: 'app-primary-contact-form',
@@ -12,11 +13,10 @@ import { Subscription }   from 'rxjs/Subscription';
 export class PrimaryContactFormComponent implements OnInit {
   
 
-  addresses: any;
-  address: any;
+  addresses: IAddress[];
+  address: IAddress;
   phone: any;
   email: any;
-  constructor(private _borrSvc: BorrowerDemographicsService, private _msgSvc: MessageService) { }
   addressLine1: FormControl;
   addressLine2: FormControl;
   city: FormControl;
@@ -25,22 +25,27 @@ export class PrimaryContactFormComponent implements OnInit {
   demographicsForm: FormGroup;
   subscription: Subscription;
 
+  constructor(private _borrSvc: BorrowerDemographicsService, private _msgSvc: MessageService) { }
+
+
   ngOnInit() {
-    if (this._msgSvc.storedMessage != undefined){
-      this.addresses = this._msgSvc.storedMessage.addresses;
-      this.address = this.addresses.find(x => x.priority === 0);
+    if (this._borrSvc.storedBorrower != undefined){
+      this.addresses = this._borrSvc.storedBorrower.Addresses;
+      this.address = this.addresses.find(x => x.Priority === 0);
     } 
-    this.subscription = this._msgSvc.message$.subscribe(
-      message => {        
-        if (message.addresses && message.addresses.length > 0) {
-          this.addresses = message.addresses;
+    this.subscription = this._borrSvc.borrower$.subscribe(
+      borr => {        
+        if (borr.Addresses && borr.Addresses.length > 0) {
+          this.addresses = borr.Addresses;
+          this.address = this.addresses.find(x => x.Priority === 0);
         }
       })
-    this.addressLine1 = new FormControl(this.address.addressLine1);
-    this.addressLine2 = new FormControl(this.address.addressLine1);
-    this.city = new FormControl(this.address.city);
-    this.state = new FormControl(this.address.state);
-    this.zip = new FormControl(this.address.zip);
+
+    this.addressLine1 = new FormControl(this.address.AddressLine1);
+    this.addressLine2 = new FormControl(this.address.AddressLine1);
+    this.city = new FormControl(this.address.City);
+    this.state = new FormControl(this.address.State);
+    this.zip = new FormControl(this.address.Zip);
     this.demographicsForm = new FormGroup({
       addressLine1: this.addressLine1,
       addressLine2: this.addressLine1,

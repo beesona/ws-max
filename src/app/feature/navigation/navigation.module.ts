@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header-component.component';
 import { LeftNavComponent } from './left-nav/left-nav.component';
@@ -12,7 +12,9 @@ import { MaskSsnPipe } from '../../shared/mask-ssn.pipe';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule    
   ],
   declarations: [ 
     MaskSsnPipe,  

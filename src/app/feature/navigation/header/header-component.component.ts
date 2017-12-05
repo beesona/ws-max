@@ -1,6 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Subscription }   from 'rxjs/Subscription';
 
+import { BorrowerDemographicsService } from '../../../services/borrower/borrower-demographics.service';
 import { MaskSsnPipe } from '../../../shared/mask-ssn.pipe';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IBorrower } from '../../../models/borrower';
 
 @Component({
   selector: 'app-header',
@@ -9,21 +13,33 @@ import { MaskSsnPipe } from '../../../shared/mask-ssn.pipe';
 })
 export class HeaderComponent implements OnInit {
 
-  _borrower: string;
-  get borrower(): string {
+  borrowerSubscription: Subscription;
+  searchSsn: string = '031700386';
+  _borrower: IBorrower;
+  searchSsnEntry: FormControl;
+  searchSsnForm: FormGroup;
+  get borrower(): IBorrower {
       return this._borrower;
   }
 
-  @Input('borrower')
-  set borrower(value:string){
+  set borrower(value:IBorrower){
       this._borrower = value;
-      //determine primary address, phone, and email
-      console.log('setting borrower...')
   }  
 
-  constructor() { }
+  constructor(private _borrSvc: BorrowerDemographicsService) { }
 
   ngOnInit() {
+    this.searchSsnEntry = new FormControl(this.searchSsn, [Validators.minLength(9), Validators.maxLength(9)]);
+    this.searchSsnForm = new FormGroup({
+      searchSsn: this.searchSsnEntry
+    })
   }
 
+  search(formValue: any): void {
+    this.borrowerSubscription = this._borrSvc.borrower$.subscribe(
+      borr => {        
+        this.borrower = borr;
+      })
+    this._borrSvc.setBorrowerDemographics(formValue.searchSsn);
+  }
 }

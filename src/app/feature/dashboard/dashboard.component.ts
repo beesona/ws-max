@@ -7,6 +7,8 @@ import { PrimaryContactFormComponent } from '../demographics/primary-contact-for
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from '../../services/message.service';
 import { Subscription }   from 'rxjs/Subscription';
+import { BorrowerDemographicsService } from '../../services/borrower/borrower-demographics.service';
+import { IBorrower } from '../../models/borrower';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,53 +23,38 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //hardcoded now, but should be returned from a dashboardLayoutService
   widgetCollection: DashboardWidget[] = [new DashboardWidget(PrimaryContactFormComponent, { Title: 'Demographics', body: 'NA'})];
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private _msgSvc: MessageService) { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private _borrSvc: BorrowerDemographicsService) { }
 
-  borrower: any;
-  formTest: any = {
-    firstName: 'Adam',
-    lastName: 'Beeson'
-  }
-  firstName: FormControl;
-  lastName: FormControl;
-  nameFormGroup: FormGroup;
+  borrower: IBorrower;
   subscription: Subscription;
 
   ngOnInit(){
-    if (this._msgSvc.storedMessage != undefined){
-      this.borrower = this._msgSvc.storedMessage;
+    if (this._borrSvc.storedBorrower != undefined){
+      this.borrower = this._borrSvc.storedBorrower;
+      if (this.borrower) {
+        this.loadWidgets();
+      }
     } 
-    this.subscription = this._msgSvc.message$.subscribe(
-      message => {        
-        this.borrower = message;
-        console.log(this.borrower);
+    this.subscription = this._borrSvc.borrower$.subscribe(
+      borr => {        
+        this.borrower = borr;
         if (this.borrower) {
           this.loadWidgets();
         }
       })
-    this.firstName = new FormControl(this.formTest.firstName, Validators.required);
-    this.lastName = new FormControl(this.formTest.lastName, Validators.required);
-    this.nameFormGroup = new FormGroup({
-      firstName: this.firstName,
-      lastName: this.lastName
-    })
   }
 
   ngAfterViewInit() {
     //this.loadWidgets();
   }
 
-  logNames(val: any){
-    console.log(val);
-  }
-
   loadWidgets(): void{
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.widgetCollection[0].component);
-    
     let viewContainerRef = this.dbw.viewContainerRef;
     viewContainerRef.clear();
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.widgetCollection[0].component);
 
     let componentRef = viewContainerRef.createComponent(componentFactory);
+    viewContainerRef.createComponent(componentFactory);
     //(<WidgetComponent>componentRef.instance).data = this.widgetCollection[0].data;
   }
 

@@ -1,50 +1,184 @@
-
 {
-"firstName": "ADAM",
-"middleInitial": "G",
-"lastName": "BEESON",
-"ssn": "254-78-4571",
-"dob": "09/04/1984",
-"enrollmentStatus": "No Enrollment Status",
-"mmaAccountId": "beesona",
-"schoolName": "Colorado State University- Pueblo",
-"schoolCode": "001394",
-"graduationDate": "07/12/2007",
-"accounts": [
-  {
-    "accountId": "456987123",
-    "type": "DEN"
+  "Id":null,
+  "Ssn":"031700386",
+  "BirthDate":"1981-02-09T00:00:00",
+  "FirstName":"DANIEL        ",
+  "MiddleInitial":"J",
+  "LastName":"LYONS                    ",
+  "Address":{
+     "Id":null,
+     "IsActive":true,
+     "IsValid":true,
+     "AddDate":"2002-06-07T00:00:00",
+     "SystemName":"DEN",
+     "EntityState":null,
+     "LastUpdated":"2011-09-09T00:00:00",
+     "Source":"B",
+     "AddressLine1":"19 PLANTATION RD              ",
+     "AddressLine2":"                              ",
+     "City":"EAST WEYMOUTH     ",
+     "State":"MA",
+     "Zip":"02189-2808     ",
+     "Country":"USA ",
+     "AddressType":"PERM",
+     "Priority":0,
+     "AddressStatus":" "
   },
-  {
-    "accountId": "152487956",
-    "type": "ED"
-  }
-],
-"addresses": [
-  {
-    "addressLine1": "255 S Cherokee St.",
-    "addressLine2": "APT 2117",
-    "city": "Denver",
-    "state": "CO",
-    "zip": "80223",
-    "priority": 0
-  }
-],
-"phones": [
-  {
-    "phoneNumber": "7192142446",
-    "phoneType": "primary",
-    "cpc": true,
-    "priority": 0
-  }
-],
-"emails": [
-  {
-    "emailAddress": "beesona@gmail.com",
-    "emailType": "primary",
-    "priority": 0
-  }
-],
-"ecorr": true,
-"moneySignThing": true
+  "Addresses":[
+     {
+        "Id":null,
+        "IsActive":true,
+        "IsValid":true,
+        "AddDate":"2002-06-07T00:00:00",
+        "SystemName":"DEN",
+        "EntityState":null,
+        "LastUpdated":"2011-09-09T00:00:00",
+        "Source":"B",
+        "AddressLine1":"19 PLANTATION RD              ",
+        "AddressLine2":"                              ",
+        "City":"EAST WEYMOUTH     ",
+        "State":"MA",
+        "Zip":"02189-2808     ",
+        "Country":"USA ",
+        "AddressType":"PERM",
+        "Priority":0,
+        "AddressStatus":" "
+     }
+  ],
+  "AddressesInSync":true,
+  "Phones":[
+     {
+        "Prefix":null,
+        "PhoneType":"HOME",
+        "AddDate":"2002-06-07T00:00:00",
+        "IsCellPhone":false,
+        "IsActive":true,
+        "SystemName":"DEN",
+        "EntityState":null,
+        "LastUpdated":"2011-09-09T00:00:00",
+        "IsValid":true,
+        "OutOfSync":true,
+        "CountryCode":null,
+        "PhoneNumber":"5082380932",
+        "Priority":1,
+        "CpcFlag":" ",
+        "CpcDate":"0001-01-01T00:00:00",
+        "IsInternational":false,
+        "InternationalPhoneExchange":""
+     },
+     {
+        "Prefix":null,
+        "PhoneType":"OTHER",
+        "AddDate":"2002-06-07T00:00:00",
+        "IsCellPhone":false,
+        "IsActive":true,
+        "SystemName":"DEN",
+        "EntityState":null,
+        "LastUpdated":"2011-09-09T00:00:00",
+        "IsValid":true,
+        "OutOfSync":true,
+        "CountryCode":null,
+        "PhoneNumber":"2380932",
+        "Priority":2,
+        "CpcFlag":" ",
+        "CpcDate":"0001-01-01T00:00:00",
+        "IsInternational":false,
+        "InternationalPhoneExchange":""
+     }
+  ],
+  "EmailAddresses":[
+     {
+        "AddDate":"2011-09-09T00:00:00",
+        "SystemName":"DEN",
+        "EntityState":null,
+        "OutOfSync":false,
+        "IsValid":true,
+        "Email":"slsshelp@nelnet.net                                         ",
+        "LastContactMadeIndicator":null,
+        "EmailType":" ",
+        "EmailStatus":" ",
+        "Priority":1
+     }
+  ],
+  "Account":{
+     "MaximumDaysPastDue":0,
+     "DelinquentAmount":76.79,
+     "OutstandingPrincipalBalance":72.6,
+     "OutstandingInterest":4.19,
+     "OutstandingFees":0,
+     "TenDayPayoffAmount":76.81,
+     "TotalBalance":76.79,
+     "RegularPaymentAmount":0,
+     "LastPaymentDate":"2014-05-02T00:00:00",
+     "LastPaymentAmount":0.01,
+     "CurrentPaymentAmountDue":0,
+     "DailyInterestAmount":0
+  },
+  "Accounts":[
+     {
+        "AccountNumber":"001039688",
+        "IsActive":true,
+        "ResultStatus":"",
+        "SystemName":"DEN",
+        "LastUpdated":"2011-09-09T00:00:00",
+        "CurrentSchoolEnrollment":{
+           "CurrentSchool":{
+              "SchoolCode":"003404",
+              "SchoolBranch":"00",
+              "SchoolName":"Johnson & Wales University              "
+           },
+           "EnrollmentStatus":"L",
+           "EnrollmentStatusDescription":"LessThanHalfTime",
+           "LastEnrollmentDate":"2004-03-09T00:00:00",
+           "SchoolCertDate":"2004-04-12T00:00:00"
+        },
+        "MaximumDaysPastDue":0,
+        "DelinquentAmount":76.79,
+        "OutstandingPrincipalBalance":72.6,
+        "OutstandingInterest":4.19,
+        "OutstandingFees":0,
+        "TenDayPayoffAmount":76.81,
+        "TotalBalance":76.79,
+        "RegularPaymentAmount":0,
+        "LastPaymentDate":"2014-05-02T00:00:00",
+        "LastPaymentAmount":0.01,
+        "CurrentPaymentAmountDue":0,
+        "DailyInterestAmount":0
+     }
+  ],
+  "Groups":null,
+  "Loans":null,
+  "Notes":null,
+  "Verifications":[
+
+  ],
+  "IsLegalStatus":false,
+  "CpcFlag":"Y",
+  "AddressStatus":" ",
+  "PhoneStatus":" ",
+  "NewBorrowerFlag":null,
+  "ECorrFlag":false,
+  "ECorrOutOfSync":false,
+  "FederalDefermentEligibility":[
+
+  ],
+  "FederalDefermentEligibilityOutOfSync":false,
+  "KwikPayFlag":false,
+  "KwikPayOutOfSync":false,
+  "MmaUsername":null,
+  "MmaLastLogin":"0001-01-01T00:00:00",
+  "LastDemographicVerificationDate":null,
+  "LastDemographicVerificationDateOutOfSync":false,
+  "RefreshedDate":"0001-01-01T00:00:00",
+  "BorrowerBeaconId":null,
+  "SystemName":"DEN",
+  "EntityState":null,
+  "ResultStatus":null,
+  "LastUpdated":"2011-09-09T00:00:00",
+  "EmailInSync":false,
+  "EnrollmentStatusInSync":true,
+  "SchoolInSync":true,
+  "Messages":[
+
+  ]
 }

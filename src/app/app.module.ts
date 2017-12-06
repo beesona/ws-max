@@ -32,7 +32,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     BorrowerCardComponent,
-    PrimaryContactFormComponent
   ],
   imports: [
     FormsModule,

@@ -1,0 +1,28 @@
+.db-widget{
+    margin-bottom: 10px;
+}
+.db-widget-yellow{
+    background-color: #ffe1a3;
+}
+.db-widget-purple{
+    background-color: #B06ECC;
+}
+.db-widget-blue{
+    background-color: #6BB2FF;
+}
+.db-widget-hdr{    
+    padding: 6px;
+    border-bottom: 2px solid #fff;
+}
+.db-widget-menu{
+    color: #fff;
+}
+.db-widget-hdr-title{
+    font-weight: 700;
+    font-size: 1.4em;
+    color: #fff;
+}
+.db-widget-content{
+    padding: 6px;
+    color: #606060;    
+}

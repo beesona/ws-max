@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BorrowerDemographicsService } from '../../../services/borrower/borrower-demographics.service';
 import { MessageService } from '../../../services/message.service'
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription }   from 'rxjs/Subscription';
 import { IAddress } from '../../../models/borrower';
 import { Subject } from 'rxjs/Subject';
@@ -48,8 +48,8 @@ export class PrimaryContactFormComponent implements OnInit {
         }
       })
 
-    this.addressLine1 = new FormControl(this.address.AddressLine1);
-    this.addressLine2 = new FormControl(this.address.AddressLine1);
+    this.addressLine1 = new FormControl(this.address ? this.address.AddressLine1 : '');
+    this.addressLine2 = new FormControl(this.address.AddressLine2);
     this.city = new FormControl(this.address.City);
     this.state = new FormControl(this.address.State);
     this.zip = new FormControl(this.address.Zip);

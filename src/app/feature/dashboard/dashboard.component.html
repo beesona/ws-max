@@ -33,52 +33,10 @@
         </ul>
     </div>
     <div *ngIf="borrower">
-        <widget-container [widgetTitle]="'Borrower Demographics'" [color]="'yellow'">            
-            <form>
-                <div class="row">
-                    <div class="form-col col-sm-3">
-                        <label for="txtAddressLine1">Address Line 1</label>
-                        <input name="txtAddressLine1" type="text" class="form-control">
-                    </div>
-                    <div class="form-col col-sm-3">
-                        <label for="txtAddressLine2">Address Line 2</label>
-                        <input name="txtAddressLine2" type="text" class="form-control">
-                    </div>
-                    <div class="form-col col-sm-3">
-                        <label for="txtCity">City</label>
-                        <input name="txtCity" type="text" class="form-control">
-                    </div>                
-                    <div class="form-col col-sm-3">
-                        <label for="ddlState">State</label>
-                        <select name="ddlState" type="text" class="form-control">
-                                <option value="">Select</option>
-                            <option value="co">CA</option>
-                            <option value="ca">CO</option>
-                        </select>
-                    </div>                                
-                </div>
-                <div class="row">
-                    <div class="form-col col-sm-3">
-                        <label for="txtZip">Zip</label>
-                        <input name="txtZip" type="text" class="form-control">
-                    </div>     
-                    <div class="form-col col-sm-3">
-                            <label for="txtPhone">Primary Phone</label>
-                            <input name="txtPhone" type="text" class="form-control">
-                    </div>     
-                    <div class="form-col col-sm-3">
-                            <label for="txtEmail">Primary Email</label>
-                            <input name="txtEmail" type="text" class="form-control">
-                    </div>                                         
-                    <div class="form-col col-sm-3 pull-right">
-                        <input class="demo-btn" type="submit" value="Save" /> 
-                        <input class="demo-btn-default" type="button" value="View All" style="margin-right: 4px;" />
-                    </div>
-                </div>
-            </form>
-            <!--<app-primary-contact-form></app-primary-contact-form>-->
+        <widget-container [widgetTitle]="'Demographics'" [color]="'default'">
+            <app-primary-contact-form [isWidget]="true"></app-primary-contact-form>
         </widget-container>
-        <widget-container [widgetTitle]="'Account Information'" [color]="'purple'"></widget-container>
-        <widget-container [widgetTitle]="'Recent Activity'" [color]="'blue'"></widget-container>
+        <widget-container [widgetTitle]="'Account Information'" [color]="'default'"></widget-container>
+        <widget-container [widgetTitle]="'Recent Activity'" [color]="'default'"></widget-container>
     </div>
 </div>

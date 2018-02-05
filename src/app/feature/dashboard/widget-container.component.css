@@ -1,6 +1,9 @@
 .db-widget{
     margin-bottom: 10px;
 }
+.db-widget-default{
+    background-color: #a1c7e4;
+}
 .db-widget-yellow{
     background-color: #ffe1a3;
 }

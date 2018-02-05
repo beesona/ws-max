@@ -31,7 +31,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BorrowerCardComponent,
+    BorrowerCardComponent
   ],
   imports: [
     FormsModule,

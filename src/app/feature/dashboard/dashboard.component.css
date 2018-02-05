@@ -1,6 +1,6 @@
 .db-main{
     background-color: #fff;
-    padding-bottom: 75px;
+    padding-bottom: 200px;
     padding: 10px;
 }
 .db-main widget-container{
@@ -14,34 +14,6 @@
     padding: 10px;
 }
 
-.form-col{
-    padding: 3px !important;
-}
-
-.demo-btn{
-    margin-top: 24px;
-    float: right;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 34px;
-    background-color: #5cb85c;
-    color: #fff;
-    border: none;    
-}
-.demo-btn:hover{
-    background-color: #4cae4c;
-}
-
-.demo-btn-default{
-    margin-top: 24px;
-    float: right;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 34px;
-    background-color: #1678a5;
-    color: #fff;
-    border: none;    
-}
-.demo-btn-default:hover{
-    background-color: #0e4963;
+input, select{
+    border: none;
 }

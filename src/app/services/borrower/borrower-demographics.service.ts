@@ -24,7 +24,8 @@ export class BorrowerDemographicsService {
   constructor(private _http: HttpClient) { }
 
   setBorrowerDemographics(ssn: string){
-    this._http.get<IBorrower[]>(this._vpnUrl + ssn + this._vpnUrlGuid).catch(this.handleError).subscribe(data => {
+    //this._http.get<IBorrower[]>(this._vpnUrl + ssn + this._vpnUrlGuid).catch(this.handleError).subscribe(data => {
+      this._http.get<IBorrower[]>(this._borrowerUrl).catch(this.handleError).subscribe(data => {
       this.storedBorrower = data;
       this.borrowerSubject.next(this.storedBorrower);  
     })

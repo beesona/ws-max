@@ -9,13 +9,17 @@ import { BorrowerCardComponent } from './feature/borrower-card/borrower-card.com
 import { PrimaryContactFormComponent } from './feature/demographics/primary-contact-form/primary-contact-form.component';
 import { HistoryComponent } from './feature/history/history.component'
 import { BorrowerDemographicsService } from './services/borrower/borrower-demographics.service';
-import { MessageService } from './services/message.service';
+import { AuthenticationService } from './services/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { DashboardComponent } from './feature/dashboard/dashboard.component';
 import { NavigationModule } from './feature/navigation/navigation.module';
 import { FeaturesModule } from './feature/features.module';
 import { AccountService } from './services/account.service';
 import { HistoryNotesService } from './services/history-notes.service';
+import { BrowserXhr } from '@angular/http';
+import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
+import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -44,10 +48,14 @@ const appRoutes: Routes = [
     AlertModule.forRoot(),
     FormsModule,
     HttpClientModule,
+    HttpModule,
     FeaturesModule,
     NavigationModule
   ],
-  providers: [BorrowerDemographicsService, AccountService, HistoryNotesService],
+  providers: [
+    {provide: BrowserXhr, useClass:CustExtBrowserXhr},
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    BorrowerDemographicsService, AccountService, HistoryNotesService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -24,9 +24,10 @@ export class BorrowerDemographicsService {
   constructor(private _http: HttpClient) { }
 
   setBorrowerDemographics(ssn: string){
-    this._http.get<IBorrower[]>(this._vpnUrl + ssn + this._vpnUrlGuid).catch(this.handleError).subscribe(data => {
+    //this._http.get<IBorrower[]>(this._vpnUrl + ssn + this._vpnUrlGuid).catch(this.handleError).subscribe(data => {
+      this._http.get<IBorrower[]>(this._borrowerUrl).catch(this.handleError).subscribe(data => {
       this.storedBorrower = data;
-      this.borrowerSubject.next(data);  
+      this.borrowerSubject.next(this.storedBorrower);  
     })
   }
 
@@ -39,4 +40,15 @@ export class BorrowerDemographicsService {
     console.log(err.message)
     return Observable.throw(err.message);
   }
+
+  trimObject(obj: any){
+    
+            if (!Array.isArray(obj) && typeof obj != 'object'){
+                return obj;
+            }
+            return Object.keys(obj).reduce((acc, key) => {
+                acc[key.trim()] = typeof obj[key] == 'string'? obj[key].trim() : this.trimObject(obj[key]);
+                return acc;
+            }, Array.isArray(obj)? []:{}); 
+        }
 }

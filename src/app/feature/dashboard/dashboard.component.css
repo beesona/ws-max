@@ -1,16 +1,19 @@
 .db-main{
     background-color: #fff;
-    padding-bottom: 75px;
+    padding-bottom: 200px;
+    padding: 10px;
 }
-
-.demo-widget{
-    background-color: red;
+.db-main widget-container{
+    padding-bottom: 10px;
 }
-
 .row{
     margin-left: 0px;
     margin-right: 0px;
 }
 .row > div{
     padding: 10px;
+}
+
+input, select{
+    border: none;
 }

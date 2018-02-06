@@ -11,6 +11,7 @@ import { BorrowerDemographicsService } from '../../services/borrower/borrower-de
 import { IBorrower } from '../../models/borrower';
 import { AccountComponent } from '../account/account.component';
 import { HistoryComponent } from '../history/history.component';
+import { WidgetContainerComponent } from './widget-container.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -39,14 +40,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.borrower = this._borrSvc.storedBorrower;
       if (this.borrower) {
         //load widgets that rely on borrower data:
-        this.loadWidgets();
+        //this.loadWidgets();
       }
     } 
     this.subscription = this._borrSvc.borrower$.subscribe(
       borr => {        
         this.borrower = borr;
         if (this.borrower) {
-          this.loadWidgets();
+          //this.loadWidgets();
         }
       })
   }

@@ -1,9 +1,10 @@
 .main{
-    margin-top: 50px;
+    margin-top: 35px;
     margin-left: 100px;
     padding-top: 16px;
     padding-left: 0px;
     margin-right: 296px;
+    padding-bottom: 50px;
 }
 
 @media only screen and (max-width: 1010px) {

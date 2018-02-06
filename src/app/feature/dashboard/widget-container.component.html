@@ -1,0 +1,13 @@
+<div class="db-widget db-widget-{{color}}">
+  <div class="db-widget-hdr">
+      <div class="db-widget-hdr-title">
+          {{widgetTitle}}
+          <span class="widget-menu pull-right">
+              <i class="fa" [ngClass]="{'fa-minus-circle': isExpanded, 'fa-plus-circle': !isExpanded}" (click)="hideShowContent()"></i>
+          </span>
+      </div>
+  </div>
+  <div class="db-widget-content" *ngIf="isExpanded">
+      <ng-content></ng-content>
+  </div>
+</div>

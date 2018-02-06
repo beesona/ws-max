@@ -1,21 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountComponent } from './account/account.component';
 import { PrimaryContactFormComponent } from './demographics/primary-contact-form/primary-contact-form.component'
 import { BorrowerDemographicsService } from '../services/borrower/borrower-demographics.service'
 import { WidgetDirective } from '../feature/dashboard/widget.directive';
 import { HistoryComponent } from './history/history.component';
+import { WidgetContainerComponent } from './dashboard/widget-container.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     DashboardComponent,
     AccountComponent,
     WidgetDirective,
-    HistoryComponent
+    HistoryComponent,
+    WidgetContainerComponent,
+    PrimaryContactFormComponent
   ],
   providers: [BorrowerDemographicsService],
   entryComponents: [PrimaryContactFormComponent, AccountComponent, HistoryComponent]

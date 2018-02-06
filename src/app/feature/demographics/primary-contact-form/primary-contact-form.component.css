@@ -1,11 +1,40 @@
-.card-card{
-    padding: 10px;
-    border: 1px solid #e3e3e3;
-    background-color: #FCFCFC;
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+input, select{
+    border: none;
+    height: 20px;
 }
 
-.demo-cont{
-    padding: 2px;
-    background-color: red;
-    border: 1px solid #6d1d1d;
+.form-col{
+    padding: 3px !important;
+}
+
+.demo-btn{
+    margin-top: 24px;
+    float: right;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 24px;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;    
+}
+.demo-btn:hover{
+    background-color: #4cae4c;
+}
+
+.demo-btn-default{
+    margin-top: 24px;
+    float: right;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 24px;
+    background-color: #1678a5;
+    color: #fff;
+    border: none;    
+}
+.demo-btn-default:hover{
+    background-color: #0e4963;
 }

@@ -10,6 +10,7 @@
     top: 50px;
     padding: 8px;
     overflow-y: scroll;
+    padding-bottom: 60px;
   }
   .right-bar-handle{
     right: 280px;

@@ -21,7 +21,6 @@ export class AuthenticationService {
   setToken(): Observable<any> {
     let url = 'https://hsz2lc6tzb.execute-api.us-west-2.amazonaws.com/Dev/v1/token/authenticate';
     let headers = new Headers({
-        //'Content-Type' : 'application/json',
         'clientkey' : 'Chris',
         'clientsecret' : 'Michelle',
     });

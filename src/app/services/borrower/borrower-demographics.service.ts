@@ -7,6 +7,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
 import { IBorrower } from '../../models/borrower';
+import { AuthenticationService } from '../authentication.service';
+import { IAuthorizationToken } from '../../models/authorizationToken';
 
 @Injectable()
 export class BorrowerDemographicsService {
@@ -20,11 +22,21 @@ export class BorrowerDemographicsService {
   private _borrowerUrl = './api/borrower/borrower.json';
   private _vpnUrl: string = 'http://dev.intsvc.nelnet.net:4106/api/workspace/v1/borrowersummarybyssn/14/1/US//abeeson/';
   private _vpnUrlGuid: string = '/46ec4d0a-a23a-4415-8d69-5c1c422aad6a';
+  private authToken: IAuthorizationToken;
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private _authSvc: AuthenticationService) { }
 
   setBorrowerDemographics(ssn: string){
     //this._http.get<IBorrower[]>(this._vpnUrl + ssn + this._vpnUrlGuid).catch(this.handleError).subscribe(data => {
+    //before we search, check to see if the auth token is still valid or if we even have one
+    if (this._authSvc.storedToken && this._authSvc.storedToken != ''){
+        this.authToken = this._authSvc.storedToken;
+    }else{
+      this._authSvc.setToken().subscribe(token => {
+          this.authToken  = token;
+      });
+    }
+
       this._http.get<IBorrower[]>(this._borrowerUrl).catch(this.handleError).subscribe(data => {
       this.storedBorrower = data;
       this.borrowerSubject.next(this.storedBorrower);  

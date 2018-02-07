@@ -36,20 +36,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   subscription: Subscription;
 
   ngOnInit(){
-    if (this._borrSvc.storedBorrower != undefined){
-      this.borrower = this._borrSvc.storedBorrower;
-      if (this.borrower) {
-        //load widgets that rely on borrower data:
-        //this.loadWidgets();
-      }
-    } 
-    this.subscription = this._borrSvc.borrower$.subscribe(
-      borr => {        
-        this.borrower = borr;
-        if (this.borrower) {
-          //this.loadWidgets();
-        }
-      })
+
   }
 
   ngAfterViewInit() {

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightBarComponent implements OnInit {
 
+  rightVisibility: string = "display: block;"
   showRight: boolean = false;
   constructor() { }
 
@@ -14,6 +15,11 @@ export class RightBarComponent implements OnInit {
   }
 
   toggleRight(): void {
-
+    this.showRight = !this.showRight;
+    if (this.showRight){
+      this.rightVisibility = "display: block !important;"
+    }else{
+      this.rightVisibility = ""
+    }
   }
 }

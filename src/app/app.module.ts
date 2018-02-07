@@ -9,8 +9,9 @@ import { BorrowerCardComponent } from './feature/borrower-card/borrower-card.com
 import { PrimaryContactFormComponent } from './feature/demographics/primary-contact-form/primary-contact-form.component';
 import { HistoryComponent } from './feature/history/history.component'
 import { BorrowerDemographicsService } from './services/borrower/borrower-demographics.service';
-import { MessageService } from './services/message.service';
+import { AuthenticationService } from './services/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { DashboardComponent } from './feature/dashboard/dashboard.component';
 import { NavigationModule } from './feature/navigation/navigation.module';
 import { FeaturesModule } from './feature/features.module';
@@ -31,8 +32,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BorrowerCardComponent,
-    PrimaryContactFormComponent
+    BorrowerCardComponent
   ],
   imports: [
     FormsModule,
@@ -45,10 +45,12 @@ const appRoutes: Routes = [
     AlertModule.forRoot(),
     FormsModule,
     HttpClientModule,
+    HttpModule,
     FeaturesModule,
     NavigationModule
   ],
-  providers: [BorrowerDemographicsService, AccountService, HistoryNotesService],
+  providers: [
+    BorrowerDemographicsService, AccountService, HistoryNotesService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

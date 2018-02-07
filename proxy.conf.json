@@ -1,0 +1,8 @@
+{
+    "/Dev/*": {
+      "target": "https://hsz2lc6tzb.execute-api.us-west-2.amazonaws.com",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+  }

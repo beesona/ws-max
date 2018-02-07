@@ -28,8 +28,8 @@ export class AuthenticationService {
 
     return this.http.post(url, 'nothing', options).map((response: any) => {
         let token = JSON.parse(response._body).data;
-        this.storedToken = response.json;
-        this.token.next(response.json);
+        this.storedToken = JSON.parse(response._body).data;
+        this.token.next(JSON.parse(response._body).data);
         return token;
     });
   }

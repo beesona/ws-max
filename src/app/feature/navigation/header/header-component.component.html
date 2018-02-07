@@ -18,8 +18,7 @@
                 <span style="font-size: .8em;"><strong>INBOUND CALL</strong> <i>with</i> <strong>ADAM BEESON</strong> <i>about</i> 
                   <a href="#" style="padding: 0px; margin: 0px; display: inline;">(Change)</a></span>
                 <br />
-                {{borrower.FirstName}} {{borrower.MiddleInitial}} {{borrower.LastName}} <strong>{{borrower?.Ssn | maskSsn}}</strong>
-                (<span *ngFor='let acct of borrower.Accounts'>{{acct.SystemName}}: <strong>{{acct.AccountNumber}}</strong></span>)
+                {{borrower.firstName}} {{borrower.middleInitial}} {{borrower.lastName}} <strong>{{borrower?.ssn | maskSsn}}</strong>
             <span class="sr-only">(current)</span></li>
         </ul>
         <form [formGroup]="searchSsnForm" (ngSubmit)="search(searchSsnForm.value)" class="navbar-form navbar-right header-search">

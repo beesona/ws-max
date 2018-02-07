@@ -15,6 +15,7 @@ export class PrimaryContactFormComponent implements OnInit {
   
   @Input() borrower: IBorrower;
   @Input() isWidget: true;
+  private searchSsn: string = '';
   addresses: IAddress[];
   primaryAddress: IAddress;
   primaryPhone: IPhone;
@@ -34,34 +35,22 @@ export class PrimaryContactFormComponent implements OnInit {
     private _msgSvc: MessageService) { }
 
   ngOnInit() {
-    if (this._borrSvc.storedBorrower != undefined){
-      this.SetDemographics(this._borrSvc.storedBorrower);
-    }else{
-      if (!!this._msgSvc.storedSearchSsn){
-        this._borrSvc.setBorrowerDemographics(this._msgSvc.storedSearchSsn);
-      }
-    }
-    this.subscription = this._borrSvc.borrower$.subscribe(
-      borr => {        
-        if (borr.Addresses && borr.Addresses.length > 0) {
-          this.SetDemographics(borr);
-        }
-      })
+    this.searchSsn = this._msgSvc.storedSearchSsn != undefined ? this._msgSvc.storedSearchSsn : '';
   }
 
   SetDemographics(borr: IBorrower){
-    this.addresses = borr.Addresses;
-    this.primaryAddress = this.FindPrimaryAddress(borr.Addresses);
-    this.primaryPhone = this.FindPrimaryPhone(borr.Phones);
-    this.primaryEmail = this.FindPrimaryEmail(borr.EmailAddresses);
+    this.addresses = borr.addresses;
+    this.primaryAddress = this.FindPrimaryAddress(borr.addresses);
+    this.primaryPhone = this.FindPrimaryPhone(borr.phones);
+    this.primaryEmail = this.FindPrimaryEmail(borr.emailAddresses);
 
-    this.addressLine1 = new FormControl(this.primaryAddress.AddressLine1);
-    this.addressLine2 = new FormControl(this.primaryAddress.AddressLine2);
-    this.city = new FormControl(this.primaryAddress.City);
-    this.state = new FormControl(this.primaryAddress.State);
-    this.zip = new FormControl(this.primaryAddress.Zip);
-    this.phone = new FormControl(this.primaryPhone.PhoneNumber);
-    this.email = new FormControl(this.primaryEmail.Email);
+    this.addressLine1 = new FormControl(this.primaryAddress.street1);
+    this.addressLine2 = new FormControl(this.primaryAddress.street2);
+    this.city = new FormControl(this.primaryAddress.city);
+    this.state = new FormControl(this.primaryAddress.state);
+    this.zip = new FormControl(this.primaryAddress.postalCode);
+    this.phone = new FormControl(this.primaryPhone.phoneNumber);
+    this.email = new FormControl(this.primaryEmail.emailAddress);
     this.demographicsForm = new FormGroup({
       addressLine1: this.addressLine1,
       addressLine2: this.addressLine1,
@@ -74,20 +63,19 @@ export class PrimaryContactFormComponent implements OnInit {
   }
 
   FindPrimaryAddress(address: IAddress[]): IAddress{
-    
-    address.sort((x, y) => { return x.Priority - y.Priority; });
+
     return address[0];
   }
 
   FindPrimaryPhone(phones: IPhone[]): IPhone{
 
-    phones.sort((x, y) => { return x.Priority - y.Priority; });
+    //phones.sort((x, y) => { return x.Priority - y.Priority; });
     return phones[0];
   }
 
   FindPrimaryEmail(emails: IEmailAddress[]): IEmailAddress{
     
-    emails.sort((x, y) => { return x.Priority - y.Priority; });
+    //emails.sort((x, y) => { return x.Priority - y.Priority; });
     return emails[0];
   }
 

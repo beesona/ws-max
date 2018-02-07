@@ -6,8 +6,9 @@ import { AccountService } from '../../../services/account.service'
 import { MessageService } from '../../../services/message.service'
 import { MaskSsnPipe } from '../../../shared/mask-ssn.pipe';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IBorrower } from '../../../models/borrower';
+import { IBorrower, IBorrowerData } from '../../../models/borrower';
 import { IAccount } from '../../../models/account'
+import { HttpResponse } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
   searchSsnForm: FormGroup;
   borrowerSubscription: Subscription;
   accountSubscription: Subscription;
-  searchSsn: string = '031700386';
+  searchSsn: string = '740032091';
   //properties
   _borrower: IBorrower;
   get borrower(): IBorrower {
@@ -53,11 +54,20 @@ export class HeaderComponent implements OnInit {
   search(formValue: any): void {
     //borrower data
     this._msgSvc.setSearchSsn(formValue.searchSsn);
+    /*
     this.borrowerSubscription = this._borrSvc.borrower$.subscribe(
       borr => {        
-        this.borrower = borr;
+        this.borrower = borr.data;
       })
-    this._borrSvc.setBorrowerDemographics(formValue.searchSsn);
+      */
+
+    this._borrSvc.getBorrowerDemographics(formValue.searchSsn).subscribe(data => {
+      this.borrower = data.body.data[0];
+      }
+    );
+
+    //this._borrSvc.setBorrowerDemographics(formValue.searchSsn);
+    
     //groups and loans data
     /*
     this.accountSubscription = this._acctSvc.groupsAndLoans$.subscribe(

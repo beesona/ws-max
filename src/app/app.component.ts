@@ -14,7 +14,6 @@ import { HttpModule } from '@angular/http';
 export class AppComponent {
   title = 'Workspace 2.0';
   searchSsn: string = '';
-  borrower: any;
 
   constructor(private _borrowerDemographicsService: BorrowerDemographicsService, private _authSvc: AuthenticationService) { }
 
@@ -22,16 +21,7 @@ export class AppComponent {
   ngOnInit(): void {
 
     this._authSvc.setToken().subscribe(token => {
-      console.log(token);
+    
     })
-    /*
-    this.borrower = this._borrowerDemographicsService.getBorrowerDemographics(this.searchSsn).subscribe(
-      borrower => {
-        this.borrower = borrower;
-        this.title = this.borrower.lastName + ', ' + this.borrower.firstName + '(' + this.borrower.ssn.substr(7,4) + ')';
-        this._msgSvc.setMessage(this.borrower);
-      }
-    )
-    */
   }
 }

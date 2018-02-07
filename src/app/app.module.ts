@@ -17,9 +17,6 @@ import { NavigationModule } from './feature/navigation/navigation.module';
 import { FeaturesModule } from './feature/features.module';
 import { AccountService } from './services/account.service';
 import { HistoryNotesService } from './services/history-notes.service';
-import { BrowserXhr } from '@angular/http';
-import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
-import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -53,8 +50,6 @@ const appRoutes: Routes = [
     NavigationModule
   ],
   providers: [
-    {provide: BrowserXhr, useClass:CustExtBrowserXhr},
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
     BorrowerDemographicsService, AccountService, HistoryNotesService, AuthenticationService],
   bootstrap: [AppComponent]
 })

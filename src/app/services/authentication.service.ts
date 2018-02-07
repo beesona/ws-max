@@ -21,16 +21,17 @@ export class AuthenticationService {
   setToken(): Observable<any> {
     let url = 'https://hsz2lc6tzb.execute-api.us-west-2.amazonaws.com/Dev/v1/token/authenticate';
     let headers = new Headers({
+        //'Content-Type' : 'application/json',
         'clientkey' : 'Chris',
-        'clientsecret' : 'Michelle'
+        'clientsecret' : 'Michelle',
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(url, 'nothing', options).map((response: Response) => {
-        return response.json;
-        //console.log(response.json);
-        //this.storedToken = response.json;
-        //this.token.next(response.json);
+    return this.http.post(url, 'nothing', options).map((response: any) => {
+        let token = JSON.parse(response._body).data;
+        this.storedToken = response.json;
+        this.token.next(response.json);
+        return token;
     });
   }
 }

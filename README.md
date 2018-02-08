@@ -1,4 +1,4 @@
-# Workspace
+# Agent Portal
 
 This is a prototype of a future agent tool to replace Workspace in the call centers. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
 

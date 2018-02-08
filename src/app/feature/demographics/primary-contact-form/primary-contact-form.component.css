@@ -21,8 +21,22 @@ input, select{
     color: #fff;
     border: none;    
 }
+.demo-btn-warn{
+    margin-top: 24px;
+    margin-left: 6px;
+    float: right;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 24px;
+    background-color: #c62323;
+    color: #fff;
+    border: none;    
+}
 .demo-btn:hover{
     background-color: #4cae4c;
+}
+.demo-warn-title{
+    font-size: 1.2em;
 }
 
 .demo-btn-default{
@@ -37,4 +51,26 @@ input, select{
 }
 .demo-btn-default:hover{
     background-color: #0e4963;
+}
+
+.demo-address-container{
+    padding: 10px;
+    margin: 20px;
+    background-color: #1678a5;
+    color: #fff;
+}
+.demo-phone-container{
+    padding: 10px;
+    margin: 20px;
+    background-color: #1678a5;
+    color: #fff;
+}
+.demo-email-container{
+    padding: 10px;
+    margin: 20px;
+    background-color: #1678a5;
+    color: #fff;
+}
+.demo-page-container{
+    padding: 20px;
 }

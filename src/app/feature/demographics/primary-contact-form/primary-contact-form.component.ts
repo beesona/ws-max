@@ -3,7 +3,7 @@ import { BorrowerDemographicsService } from '../../../services/borrower/borrower
 import { MessageService } from '../../../services/message.service'
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription }   from 'rxjs/Subscription';
-import { IAddress, IBorrower, IEmailAddress, IPhone } from '../../../models/borrower';
+import { IAddress, IBorrower, IEmailAddress, IPhone, Address, Email, Phone } from '../../../models/borrower';
 import { Subject } from 'rxjs/Subject';
 
 @Component({
@@ -28,19 +28,19 @@ export class PrimaryContactFormComponent implements OnInit {
 
   constructor(private _borrSvc: BorrowerDemographicsService,
     private _msgSvc: MessageService) {
-      this.ClearFields();
+    this.SetDemographics()
     }
 
   ngOnInit() {
     if (this._borrSvc.storedBorrower != undefined){
       this.borrower = this._borrSvc.storedBorrower;
-      this.SetDemographics(this.borrower);
+      this.SetDemographics();
     }
     this.borrSubscription = this._borrSvc.borrower$.subscribe(
       borr => {        
         if (borr) {
           this.borrower = borr;
-          this.SetDemographics(this.borrower);
+          this.SetDemographics();
         }else{
           this.ClearFields();
         }
@@ -50,11 +50,16 @@ export class PrimaryContactFormComponent implements OnInit {
   ClearFields(){
   }
 
-  SetDemographics(borr: IBorrower){
-    this.addresses = borr.addresses;
-    this.primaryAddress = this.FindPrimaryAddress(borr.addresses);
-    this.primaryPhone = this.FindPrimaryPhone(borr.phones);
-    this.primaryEmail = this.FindPrimaryEmail(borr.emailAddresses);
+  SetDemographics(){
+    if (this.borrower){
+      this.primaryAddress = this.borrower.addresses && this.borrower.addresses.length > 0 && this.borrower.addresses[0] != null ? this.FindPrimaryAddress(this.borrower.addresses) : new Address;
+      this.primaryPhone = this.borrower.phones && this.borrower.phones.length > 0 && this.borrower.phones[0] != null ? this.FindPrimaryPhone(this.borrower.phones) : new Phone;
+      this.primaryEmail = this.borrower.emailAddresses && this.borrower.emailAddresses.length > 0 && this.borrower.emailAddresses[0] != null ? this.FindPrimaryEmail(this.borrower.emailAddresses) : new Email;
+    }else{
+      this.primaryAddress = new Address;
+      this.primaryPhone = new Phone;
+      this.primaryEmail = new Email;
+    }
   }
 
   FindPrimaryAddress(address: IAddress[]): IAddress{
@@ -74,8 +79,22 @@ export class PrimaryContactFormComponent implements OnInit {
     return emails[0];
   }
 
-  saveDemographics(demographicsForm: FormGroup) {
+  saveDemographics() {
+    let addressExists = this.borrower.addresses.indexOf(this.primaryAddress);
+    let phoneExists = this.borrower.phones.indexOf(this.primaryPhone);
+    let emailExists = this.borrower.emailAddresses.indexOf(this.primaryEmail);
+    if (addressExists < 0){
+      this.borrower.addresses.unshift(this.primaryAddress);  
+    }
+    if (phoneExists < 0){
+      this.borrower.phones.unshift(this.primaryPhone);  
+    }
+    if (emailExists < 0){
+      this.borrower.emailAddresses.unshift(this.primaryEmail);  
+    }
     let retData;
+    //check for null information
+    
     this._borrSvc.updateBorrower(this.borrower)
     .subscribe(data => retData = data);
     console.log(retData);

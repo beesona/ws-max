@@ -31,9 +31,7 @@ export class BorrowerDemographicsService {
   }
 
   getBorrowerDemographics(ssn: string): Observable<IBorrower> {
-    //this.ssnSub = this._msgSvc.searchSsn$.subscribe(data => this.storedSsn = data);
     this.authToken = this._authSvc.storedToken;
-
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.authToken.accessToken

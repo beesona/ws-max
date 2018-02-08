@@ -17,6 +17,7 @@ import { NavigationModule } from './feature/navigation/navigation.module';
 import { FeaturesModule } from './feature/features.module';
 import { AccountService } from './services/account.service';
 import { HistoryNotesService } from './services/history-notes.service';
+import { MessageService } from './services/message.service';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -50,7 +51,7 @@ const appRoutes: Routes = [
     NavigationModule
   ],
   providers: [
-    BorrowerDemographicsService, AccountService, HistoryNotesService, AuthenticationService],
+    BorrowerDemographicsService, AccountService, HistoryNotesService, AuthenticationService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,53 +5,20 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
-      <h3>Groups</h3>
-      <table class="table-responsive table-striped table-hover table-bordered">
-        <thead>
-          <th>Group ID</th>
-          <th>Loan Type</th>
-          <th>Loan Status</th>
-          <th>Interest Rate</th>
-          <th>Days Past Due</th>
-          <th>Due Date</th>
-          <th>Current Payment Amount</th>
-        </thead>
-        <tr *ngFor="let group of groups">
-          <td>{{group?.GroupId}}</td>
-          <td>{{group?.LoanType}}</td>
-          <td>{{group?.LoanStatus}}</td>
-          <td>{{group?.InterestRate}}</td>
-          <td>{{group?.DaysPastDue}}</td>
-          <td>{{group?.DueDate}}</td>
-          <td>{{group?.CurrentPaymentAmount}}</td>        
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="row">
       <div class="col-md-12">
         <h3>Loans</h3>
         <table class="table-responsive table-striped table-hover table-bordered">
           <thead>
-            <th>Loan #</th>
-            <th>Loan Type</th>
-            <th>Lender ID</th>
-            <th>Status</th>
+            <th>Loan ID</th>
+            <th>Loan Program</th>
+            <th>Lender Amount</th>
             <th>Interest Rate</th>
-            <th>Outstanding Fees</th>
-            <th>Term Remaining</th>
-            <th>Total Balance</th>
           </thead>
           <tr *ngFor="let loan of loans">
-            <td>{{loan?.LoanNumber}}</td>
-            <td>{{loan?.LoanType}}</td>
-            <td>{{loan?.LenderId}}</td>
-            <td>{{loan?.Status}}</td>
-            <td>{{loan?.InterestRate}}</td>
-            <td>{{loan?.OutstandingFees}}</td>
-            <td>{{loan?.TermRemaining}}</td>
-            <td>{{loan?.TotalBalance}}</td>        
+            <td>{{loan?.loanId}}</td>
+            <td>{{loan?.loanProgramId}}</td>
+            <td>{{loan?.amount}}</td>
+            <td>{{loan?.interestRate}}</td>        
           </tr>
         </table>
       </div>

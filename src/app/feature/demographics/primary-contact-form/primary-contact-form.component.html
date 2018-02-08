@@ -96,8 +96,8 @@
 
 <div *ngIf="!isWidget" class="demo-page-container">
 
-    <div>
-        <h3>Addresses</h3><i class="fa fa-plus-square" aria-hidden="true"></i>
+    <div *ngIf="borrower && (borrower.addresses.length > 0 && borrower.addresses[0] != null)">
+        <h3>Addresses <input type="button" class="btn btn-success btn-sm pull-right" value="Add New" (click)="addAddress()"></h3>
         <hr>
         <div class="demo-address-container" *ngFor="let address of borrower.addresses">
             <form (ngSubmit)="saveAddress(address)">
@@ -176,15 +176,15 @@
                             <input name="txtZip"  [(ngModel)]="address.postalCode" type="text" class="form-control">
                         </div>                
                         <div class="form-col col-md-2">
-                            <input class="demo-btn-warn" type="button" value="Delete" /> 
-                            <input class="demo-btn" type="submit" value="Save" /> 
+                            <input class="demo-btn-warn" type="button" value="Delete"  (click)="deleteAddress(address)" /> 
+                            <input class="demo-btn" type="button" value="Save" (click)="saveDemo()" /> 
                         </div>
                     </div>
             </form>
         </div>
     </div>
-    <div>
-        <h3>Phones</h3>
+    <div *ngIf="borrower && (borrower.phones.length > 0 && borrower.phones[0] != null)">
+        <h3>Phones <input type="button" class="btn btn-success btn-sm pull-right" value="Add New" (click)="addPhone()"></h3>
         <hr>
         <div class="demo-phone-container" *ngFor="let phone of borrower.phones">
             <div class="row">
@@ -198,29 +198,33 @@
                         <input name="txtPhoneType" [(ngModel)]="phone.type" type="text" class="form-control">
                     </div>
                     <div class="form-col col-sm-3 pull-right">
-                            <input class="demo-btn" type="submit" value="Save" /> 
+                            <input class="demo-btn-warn" type="button" value="Delete"  (click)="deletePhone(phone)" /> 
+                            <input class="demo-btn" type="button" value="Save" (click)="saveDemo()" /> 
                     </div>
                 </form>          
             </div> 
         </div>
     </div>
-    <div>
-        <h3>Emails</h3>
+    <div  *ngIf="borrower && (borrower.emailAddresses.length > 0 && borrower.emailAddresses[0] != null)">
+        <h3>Emails <input type="button" class="btn btn-success btn-sm pull-right" value="Add New" (click)="addEmail()"></h3>
         <hr>
         <div class="demo-email-container" *ngFor="let email of borrower.emailAddresses">
-            <form (ngSubmit)="saveEmail(email)">
-                <div class="form-col col-sm-3">
-                        <label for="txtEmailAddress">Email Address</label>
-                        <input name="txtEmailAddress"  [(ngModel)]="email.emailAddress" type="text" class="form-control">
-                </div>
-                <div class="form-col col-sm-3">
-                    <label for="txtEmailType">Email Type</label>
-                    <input name="txtEmailType" [(ngModel)]="email.type" type="text" class="form-control">
-                </div>
-                <div class="form-col col-sm-3 pull-right">
-                        <input class="demo-btn" type="submit" value="Save" /> 
-                </div>                
-            </form>            
+            <div class="row">
+                <form (ngSubmit)="saveEmail(email)">
+                    <div class="form-col col-sm-3">
+                            <label for="txtEmailAddress">Email Address</label>
+                            <input name="txtEmailAddress"  [(ngModel)]="email.emailAddress" type="text" class="form-control">
+                    </div>
+                    <div class="form-col col-sm-3">
+                        <label for="txtEmailType">Email Type</label>
+                        <input name="txtEmailType" [(ngModel)]="email.type" type="text" class="form-control">
+                    </div>
+                    <div class="form-col col-sm-3 pull-right">
+                            <input class="demo-btn-warn" type="button" value="Delete"  (click)="deleteEmail(email)" /> 
+                            <input class="demo-btn" type="button" value="Save" (click)="saveDemo()" /> 
+                    </div>                
+                </form>  
+            </div>          
         </div>
     </div>    
 </div>

@@ -99,4 +99,37 @@ export class PrimaryContactFormComponent implements OnInit {
     .subscribe(data => retData = data);
     console.log(retData);
   }
+
+  saveDemo(): void{
+    //do some address validation here
+    let retData;
+    this._borrSvc.updateBorrower(this.borrower)
+    .subscribe(data => retData = data);
+    console.log('saved demo info');
+  }
+
+  addAddress(): void {
+    this.borrower.addresses.push(new Address);
+  }
+
+  addPhone(): void {
+    this.borrower.phones.push(new Phone);
+  }
+
+  addEmail(): void {
+    this.borrower.emailAddresses.push(new Email);
+  }
+
+  deleteAddress(address: IAddress){
+    this.borrower.addresses.splice(this.borrower.addresses.indexOf(address), 1);
+    this.saveDemo();
+  }
+  deletePhone(phone: IPhone){
+    this.borrower.phones.splice(this.borrower.phones.indexOf(phone), 1);
+    this.saveDemo();
+  }
+  deleteEmail(email: IEmailAddress){
+    this.borrower.emailAddresses.splice(this.borrower.emailAddresses.indexOf(email), 1);
+    this.saveDemo();
+  }
 }

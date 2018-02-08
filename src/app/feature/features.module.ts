@@ -21,7 +21,7 @@ import { WidgetContainerComponent } from './dashboard/widget-container.component
     WidgetDirective,
     HistoryComponent,
     WidgetContainerComponent,
-    PrimaryContactFormComponent
+    PrimaryContactFormComponent,
   ],
   providers: [BorrowerDemographicsService],
   entryComponents: [PrimaryContactFormComponent, AccountComponent, HistoryComponent]

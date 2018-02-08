@@ -8,7 +8,7 @@ export class MessageService {
   private message = new Subject<any>();
   private searchSsn = new Subject<string>();
   storedMessage: any;
-  storedSearchSsn: string;
+  storedSearchSsn: string = '';
  
   // Observable string streams
   message$ = this.message.asObservable();

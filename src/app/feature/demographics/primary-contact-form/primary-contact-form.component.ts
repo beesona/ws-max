@@ -9,7 +9,8 @@ import { Subject } from 'rxjs/Subject';
 @Component({
   selector: 'app-primary-contact-form',
   templateUrl: './primary-contact-form.component.html',
-  styleUrls: ['./primary-contact-form.component.css']
+  styleUrls: ['./primary-contact-form.component.css'],
+  providers: [MessageService]
 })
 export class PrimaryContactFormComponent implements OnInit {
   
@@ -22,20 +23,31 @@ export class PrimaryContactFormComponent implements OnInit {
   primaryEmail: IEmailAddress;
   phone: any;
   email: any;
-  addressLine1: FormControl;
-  addressLine2: FormControl;
-  city: FormControl;
-  state: FormControl;
-  zip: FormControl;
-  demographicsForm: FormGroup;
-  subscription: Subscription;
+  borrSubscription: Subscription;
   msgSvcSubscription: Subscription;
 
   constructor(private _borrSvc: BorrowerDemographicsService,
-    private _msgSvc: MessageService) { }
+    private _msgSvc: MessageService) {
+      this.ClearFields();
+    }
 
   ngOnInit() {
-    this.searchSsn = this._msgSvc.storedSearchSsn != undefined ? this._msgSvc.storedSearchSsn : '';
+    if (this._borrSvc.storedBorrower != undefined){
+      this.borrower = this._borrSvc.storedBorrower;
+      this.SetDemographics(this.borrower);
+    }
+    this.borrSubscription = this._borrSvc.borrower$.subscribe(
+      borr => {        
+        if (borr) {
+          this.borrower = borr;
+          this.SetDemographics(this.borrower);
+        }else{
+          this.ClearFields();
+        }
+    })
+  }
+
+  ClearFields(){
   }
 
   SetDemographics(borr: IBorrower){
@@ -43,23 +55,6 @@ export class PrimaryContactFormComponent implements OnInit {
     this.primaryAddress = this.FindPrimaryAddress(borr.addresses);
     this.primaryPhone = this.FindPrimaryPhone(borr.phones);
     this.primaryEmail = this.FindPrimaryEmail(borr.emailAddresses);
-
-    this.addressLine1 = new FormControl(this.primaryAddress.street1);
-    this.addressLine2 = new FormControl(this.primaryAddress.street2);
-    this.city = new FormControl(this.primaryAddress.city);
-    this.state = new FormControl(this.primaryAddress.state);
-    this.zip = new FormControl(this.primaryAddress.postalCode);
-    this.phone = new FormControl(this.primaryPhone.phoneNumber);
-    this.email = new FormControl(this.primaryEmail.emailAddress);
-    this.demographicsForm = new FormGroup({
-      addressLine1: this.addressLine1,
-      addressLine2: this.addressLine1,
-      city: this.city,
-      state: this.state,
-      zip: this.zip,
-      phone: this.phone,
-      email: this.email
-    });
   }
 
   FindPrimaryAddress(address: IAddress[]): IAddress{
@@ -80,6 +75,9 @@ export class PrimaryContactFormComponent implements OnInit {
   }
 
   saveDemographics(demographicsForm: FormGroup) {
-    console.log(demographicsForm);
+    let retData;
+    this._borrSvc.updateBorrower(this.borrower)
+    .subscribe(data => retData = data);
+    console.log(retData);
   }
 }

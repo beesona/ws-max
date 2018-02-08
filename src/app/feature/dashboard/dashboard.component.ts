@@ -16,12 +16,16 @@ import { WidgetContainerComponent } from './widget-container.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers: [MessageService]
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 
   @ViewChild(WidgetDirective) dbw: WidgetDirective;
   defaultDashboard: boolean = true;
+  ssnSubscription: Subscription;
+  borrower: IBorrower;
+  borrSubscription: Subscription;
 
   //hardcoded now, but should be returned from a dashboardLayoutService
   widgetCollection: DashboardWidget[] = [
@@ -30,13 +34,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     new DashboardWidget(HistoryComponent, { title: 'Recent Activity', isWidget: true})
   ];
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private _borrSvc: BorrowerDemographicsService) { }
-
-  borrower: IBorrower;
-  subscription: Subscription;
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, 
+    private _borrSvc: BorrowerDemographicsService,
+    private _msgSvc: MessageService
+  ) { }
 
   ngOnInit(){
 
+    this.borrSubscription = this._borrSvc.borrower$.subscribe(
+      borr => {        
+        if (borr) {
+          this.borrower = borr;
+        }
+    })
   }
 
   ngAfterViewInit() {

@@ -13,15 +13,16 @@ import { HttpResponse } from 'selenium-webdriver/http';
 @Component({
   selector: 'app-header',
   templateUrl: './header-component.component.html',
-  styleUrls: ['./header-component.component.css']
+  styleUrls: ['./header-component.component.css'],
+  providers: [MessageService]
 })
 export class HeaderComponent implements OnInit {
 
   searchSsnEntry: FormControl;
   searchSsnForm: FormGroup;
   borrowerSubscription: Subscription;
-  accountSubscription: Subscription;
   searchSsn: string = '740032091';
+
   //properties
   _borrower: IBorrower;
   get borrower(): IBorrower {
@@ -62,7 +63,7 @@ export class HeaderComponent implements OnInit {
       */
 
     this._borrSvc.getBorrowerDemographics(formValue.searchSsn).subscribe(data => {
-      this.borrower = data.body.data[0];
+      this.borrower = data;
       }
     );
 

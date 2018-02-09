@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IPaymentDetails } from '../../../models/paymentHistory';
+import { IPaymentDetails, IPaymentData } from '../../../models/paymentHistory';
 import { PaymentsService } from '../../../services/payments.service';
 import { Subscription } from 'rxjs/Subscription';
+import { BorrowerDemographicsService } from '../../../services/borrower/borrower-demographics.service';
+import { IBorrower } from '../../../models/borrower';
 
 
 @Component({
@@ -14,19 +16,37 @@ export class PaymentHistoryComponent implements OnInit {
 
   paymentSubscription: Subscription;
   paymentDetails: IPaymentDetails;
+  paymentData: IPaymentData;
+  borrower: IBorrower;
+  borrSubscription: Subscription;
 
-  constructor(private _pymtService: PaymentsService) { }
+  constructor(private _pymtService: PaymentsService, private _borrSvc: BorrowerDemographicsService) { }
 
   ngOnInit(){ 
-    debugger;
-    this.getData();
+    if (this._borrSvc.storedBorrower != undefined){
+      this.borrower = this._borrSvc.storedBorrower;
+      this.GetPaymentData();
+    }
+    this.borrSubscription = this._borrSvc.borrower$.subscribe(
+      borr => {        
+        if (borr) {
+          this.borrower = borr;
+          this.GetPaymentData();
+        }else{
+          //clear the history
+        }
+    })
   }
-
-  getData(){
-    this.paymentSubscription = this._pymtService.paymentHistory$.subscribe( data => { if (data) { this.paymentDetails = data; }
+  
+  GetPaymentData(){
+  this._pymtService.getPaymentDetails(this.borrower.externalReferenceId).subscribe(
+    paymentData => {
+      if (paymentData){
+        this.paymentData = paymentData;
+        console.log(this.paymentData);
+      }else{
+        //clear the history
       }
-    );
+    })
   }
-
-   
 }

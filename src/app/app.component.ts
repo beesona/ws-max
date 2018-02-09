@@ -12,7 +12,7 @@ import { HttpModule } from '@angular/http';
   providers: [MessageService]
 })
 export class AppComponent {
-  title = 'Workspace 2.0';
+  title = 'Account Services';
   searchSsn: string = '';
 
   constructor(private _borrowerDemographicsService: BorrowerDemographicsService, private _authSvc: AuthenticationService) { }

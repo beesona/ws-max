@@ -1,9 +1,4 @@
-<div class="account-widget" *ngIf="data.isWidget">
-  <div class="row">
-    <div class="col-md-12" *ngIf="data.isWidget">
-        <span class="widget-title">{{data.title}}</span>
-    </div>
-  </div>
+<div class="account-widget" *ngIf="isWidget">
   <div class="row">
       <div class="col-md-12">
         <h3>Loans</h3>
@@ -14,11 +9,11 @@
             <th>Loan Amount</th>
             <th>Interest Rate</th>
           </thead>
-          <tr *ngFor="let details of loans">
-            <td [(ngModel)]="account.loanId"></td>
-            <td [(ngModel)]="account.loanProgramId"></td>
-            <td [(ngModel)]="account.amount"></td>
-            <td [(ngModel)]="account.interestRate"></td>
+          <tr>
+            <td>{{accountData.loanId}}</td>
+            <td>{{accountData.loanProgramId}}</td>
+            <td>{{accountData.amount}}</td>
+            <td>{{accountData.interestRate}}</td>
           </tr>
         </table>
       </div>

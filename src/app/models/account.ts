@@ -2,12 +2,12 @@ export interface ILender {
     lenderId: string;
 }
 
-export interface IBorrower {
+export interface IBorrowerDetails {
     borrowerId: string;
     borrowerType: string;
 }
 
-export interface IAccount {
+export interface IAccountDetails {
     loanId: string;
     loanProgramId: string;
     term: number;
@@ -27,9 +27,9 @@ export interface IAccount {
     updatedBy: any;
     isActive: boolean;
     lender: ILender;
-    borrowers: IBorrower[];
+    borrowers: IBorrowerDetails[];
 }
 
 export interface IAccountData {
-    data: IAccount;
+    data: IAccountDetails[];
 }

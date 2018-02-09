@@ -1,45 +1,51 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MessageService } from './../../services/message.service'
-import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription }   from 'rxjs/Subscription';
-import { IAccount, IBorrower, ILender } from './../../models/account';
-import { Subject } from 'rxjs/Subject';
+import { IAccountData, IAccountDetails, ILender } from './../../models/account';
 import { AccountService } from '../../services/account.service';
+import { Subscription }   from 'rxjs/Subscription';
+import { BorrowerDemographicsService } from './../../services/borrower/borrower-demographics.service';
+import { IBorrower } from './../../models/borrower';
 
 @Component({
-  selector: 'app-account',
+  selector: 'app-accounts',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css'],
-  providers: [MessageService]
+  styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
   
-  @Input() account: IAccount;
   @Input() isWidget: true;
-  private searchSsn: string = '';
-  borrowers: IBorrower[];
-  lender: ILender;
+  accountSubscription: Subscription;
+  accountDetails: IAccountDetails;
+  accountData: IAccountData;
+  borrower: IBorrower;
   borrSubscription: Subscription;
-  msgSvcSubscription: Subscription;
 
-  constructor(private _acctSvc: AccountService,
-    private _msgSvc: MessageService) {
-    // this.SetDemographics()
-    }
+  constructor(private _acctService: AccountService, private _borrSvc: BorrowerDemographicsService) { }
 
   ngOnInit() {
-    // if (this._borrSvc.storedBorrower != undefined){
-    //   this.borrower = this._borrSvc.storedBorrower;
-    //   this.SetDemographics();
-    // }
-    // this.borrSubscription = this._borrSvc.borrower$.subscribe(
-    //   borr => {        
-    //     if (borr) {
-    //       this.borrower = borr;
-    //       this.SetDemographics();
-    //     }else{
-    //       this.ClearFields();
-    //     }
-    // })
+    if (this._borrSvc.storedBorrower != undefined){
+      this.borrower = this._borrSvc.storedBorrower;
+      this.GetAccountData();
+    }
+    this.borrSubscription = this._borrSvc.borrower$.subscribe(
+      borr => {        
+        if (borr) {
+          this.borrower = borr;
+          this.GetAccountData();
+        }else{
+          //clear the history
+        }
+    })
+  }
+
+  GetAccountData(){
+  this._acctService.getAccounts(this.borrower.externalReferenceId).subscribe(
+    accountData => {
+      if (accountData){
+        this.accountData = accountData;
+        console.log(this.accountData);
+      }else{
+        //clear the history
+      }
+    })
   }
 }

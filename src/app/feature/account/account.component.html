@@ -10,15 +10,15 @@
         <table class="table-responsive table-striped table-hover table-bordered">
           <thead>
             <th>Loan ID</th>
-            <th>Loan Program</th>
-            <th>Lender Amount</th>
+            <th>Loan Program ID</th>
+            <th>Loan Amount</th>
             <th>Interest Rate</th>
           </thead>
-          <tr *ngFor="let loan of loans">
-            <td>{{loan?.loanId}}</td>
-            <td>{{loan?.loanProgramId}}</td>
-            <td>{{loan?.amount}}</td>
-            <td>{{loan?.interestRate}}</td>        
+          <tr *ngFor="let details of loans">
+            <td [(ngModel)]="account.loanId"></td>
+            <td [(ngModel)]="account.loanProgramId"></td>
+            <td [(ngModel)]="account.amount"></td>
+            <td [(ngModel)]="account.interestRate"></td>
           </tr>
         </table>
       </div>

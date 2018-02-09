@@ -6,31 +6,31 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
-import { IAccount, IAccountData } from '../../models/account';
-import { AuthenticationService } from '../authentication.service';
-import { IAuthorizationToken } from '../../models/authorizationToken';
+import { IAccount, IAccountData } from './../models/account';
+import { AuthenticationService } from './authentication.service';
+import { IAuthorizationToken } from './../models/authorizationToken';
 import { HttpResponse } from '@angular/common/http/src/response';
-import { MessageService } from '../message.service';
+import { MessageService } from './message.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Injectable()
 export class AccountService {
 
-  private _accountUrl = 'https://dev-application.nelnet.io/v1/loans?ssn=';
+  private _accountUrl = 'https://dev-application.nelnet.io/v1/loans/';
   private _accountPutUrl = 'https://dev-application.nelnet.io/v1/loans/';
   private authToken: IAuthorizationToken;
   private storedSsn: string;
   private borrower = new Subject<IAccount>();
-  account$ = this.account.asObservable();
+  account = this.account.asObservable();
   private ssnSub = Subscription;
   storedAccount: IAccount;
 
   constructor(private _http: HttpClient,
     private _authSvc: AuthenticationService,
-    private _msgSvc: MessageService) { 
+    private _msgSvc: MessageService) {
   }
 
-  getAccounts(ssn: string): Observable<IAccount> {
+  getAccounts(loanId: string): Observable<IAccount> {
     //this.ssnSub = this._msgSvc.searchSsn$.subscribe(data => this.storedSsn = data);
     this.authToken = this._authSvc.storedToken;
 
@@ -42,7 +42,7 @@ export class AccountService {
     };
 
     return this._http.get<IAccount>(
-      this._accountUrl + ssn, 
+      this._accountUrl + loanId,
       { headers:new HttpHeaders({ 'Authorization': 'Bearer ' + this.authToken.accessToken }), observe: 'response' }
     ).map((response: any) => {
       let accountData: IAccount;
@@ -69,7 +69,7 @@ export class AccountService {
     };
 
     return this._http.put<any>(
-      this._accountPutUrl + account.accountId, 
+      this._accountPutUrl + account.loanId,
       account,
       { headers:new HttpHeaders({ 'Authorization': 'Bearer ' + this.authToken.accessToken }), 
       observe: 'response' }

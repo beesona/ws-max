@@ -37,9 +37,10 @@
             <app-primary-contact-form [isWidget]="true"></app-primary-contact-form>
         </widget-container>
         <widget-container [widgetTitle]="'Account Information'" [color]="'default'"></widget-container>
-        <widget-container [widgetTitle]="'Recent Activity'" [color]="'default'"></widget-container>
-        <widget-container [widgetTitle]="'Test Widget'" [color]="'default'">
-            <app-history></app-history>
+        <widget-container [widgetTitle]="'Activity'" [color]="'default'">
+            <app-activities></app-activities>
+        </widget-container>
+        <widget-container [widgetTitle]="'Test Widget'" [color]="'default'">            
         </widget-container>
     </div>
 </div>

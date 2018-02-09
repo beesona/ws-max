@@ -5,13 +5,14 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
-
+import { IBorrower, IBorrowerData } from './../models/borrower';
 import { IPaymentDetails, IPaymentData } from '../models/paymentHistory';
 import { AuthenticationService } from './authentication.service';
 import { IAuthorizationToken } from '../models/authorizationToken';
 import { HttpResponse } from '@angular/common/http/src/response';
 import { MessageService } from './message.service';
 import { Subscription } from 'rxjs/Subscription';
+import { BorrowerDemographicsService } from './borrower/borrower-demographics.service';
 
 @Injectable()
 export class PaymentsService {
@@ -20,65 +21,17 @@ export class PaymentsService {
   private _paymentPutUrl = 'https://dev-application.nelnet.io/v1/payments';
   data: any = {};
   private authToken: IAuthorizationToken;
-  private paymentHistory = new Subject<IPaymentDetails>();
-  paymentHistory$ = this.paymentHistory.asObservable();
-  private externalReferenceIdSub = Subscription;
-  storedPaymentHistory: IPaymentDetails;
+  private payments = new Subject<IPaymentData>();
+  payments$ = this.payments.asObservable();
+  private borrower = Subscription;
+  storedPayments: IPaymentData;
+  storedBorrower: IBorrower;
+  private borrRefId: string;
 
-  constructor(private _http: HttpClient, private _authSvc: AuthenticationService) { 
-    this.getData();
-    this.getPaymentDetails();
-  }
-  
-  getData(){
-    return this._http.get(this._paymentPutUrl)
-      .map((res: Response)=> res.json())
+  constructor(private _http: HttpClient, private _authSvc: AuthenticationService, private _borrSvc: BorrowerDemographicsService) { 
   }
 
-  getPaymentDetails(){
-    this.authToken = this._authSvc.storedToken;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + this.authToken.accessToken
-      }),
-      observe: 'response'};
-
-      this.getData().subscribe(data => {
-        console.log(data);
-        this.data = data;
-      });
-
-      return this._http.get<IPaymentDetails>(
-        this._paymentHistoryUrl,
-        { headers:new HttpHeaders({ 'Authorization': 'Bearer ' + this.authToken.accessToken }), observe: 'response' }
-      ).map((response: any) => {
-        let paymentData: IPaymentDetails;
-        if (response.body.data.length > 0){
-          paymentData = response.body.data[0];
-          this.paymentHistory.next(paymentData);
-          this.storedPaymentHistory = paymentData;
-          return paymentData;
-        }else{
-          this.paymentHistory.next(paymentData);
-          this.storedPaymentHistory = paymentData;
-          return paymentData;
-        }
-      });
-    
-  }
-
- /* private _paymentHistoryUrl = 'https://dev-application.nelnet.io/v1/payments?externalreferenceid=';
-  private _paymentPutUrl = 'https://dev-application.nelnet.io/v1/payments';
-  private authToken: IAuthorizationToken;
-  private storedExternalReferenceId: string;
-  private paymentHistory = new Subject<IPaymentDetails>();
-  paymentHistory$ = this.paymentHistory.asObservable();
-  private externalReferenceIdSub = Subscription;
-  storedPaymentHistory: IPaymentDetails;
-
-  constructor(private _http: HttpClient, private _authSvc: AuthenticationService) { }
-
-  getPaymentDetails(externalReferenceId: string): Observable<IPaymentDetails> {
+  getPaymentDetails(extRefId: string): Observable<IPaymentData> {
     this.authToken = this._authSvc.storedToken;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -87,21 +40,21 @@ export class PaymentsService {
       observe: 'response'
     };
 
-    return this._http.get<IPaymentDetails>(
-      this._paymentHistoryUrl + externalReferenceId,
+    return this._http.get<IPaymentData>(
+      this._paymentHistoryUrl + extRefId, 
       { headers:new HttpHeaders({ 'Authorization': 'Bearer ' + this.authToken.accessToken }), observe: 'response' }
     ).map((response: any) => {
-      let paymentData: IPaymentDetails;
+      let paymentData: IPaymentData;
       if (response.body.data.length > 0){
         paymentData = response.body.data[0];
-        this.paymentHistory.next(paymentData);
-        this.storedPaymentHistory = paymentData;
+        this.payments.next(paymentData);
+        this.storedPayments = paymentData;
         return paymentData;
       }else{
-        this.paymentHistory.next(paymentData);
-        this.storedPaymentHistory = paymentData;
+        this.payments.next(paymentData);
+        this.storedPayments = paymentData;
         return paymentData;
       }
     });
-  }*/
+  }
 }

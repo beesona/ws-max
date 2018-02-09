@@ -42,7 +42,6 @@ export class AccountComponent implements OnInit {
     accountData => {
       if (accountData){
         this.accountData = accountData;
-        console.log(this.accountData);
       }else{
         //clear the history
       }

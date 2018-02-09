@@ -25,7 +25,8 @@ import { PaymentHistoryComponent } from './history/payment-history/payment-histo
     WidgetContainerComponent,
     PrimaryContactFormComponent,
     ActivitiesComponent,
-    PaymentHistoryComponent
+    PaymentHistoryComponent,
+    ActivitiesComponent
   ],
   providers: [BorrowerDemographicsService],
   entryComponents: [PrimaryContactFormComponent, AccountComponent, HistoryComponent]

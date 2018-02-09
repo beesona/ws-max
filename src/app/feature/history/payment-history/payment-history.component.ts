@@ -18,6 +18,7 @@ export class PaymentHistoryComponent implements OnInit {
   constructor(private _pymtService: PaymentsService) { }
 
   ngOnInit(){ 
+    debugger;
     this.getData();
   }
 

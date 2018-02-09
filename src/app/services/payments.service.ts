@@ -16,25 +16,70 @@ import { Subscription } from 'rxjs/Subscription';
 @Injectable()
 export class PaymentsService {
 
-  private _paymentHistoryUrl = 'https://dev-application.nelnet.io/v1/payments';
- // private _paymentPutUrl = 'https://dev-application.nelnet.io/v1/borrowers/';
+  private _paymentHistoryUrl = 'https://dev-application.nelnet.io/v1/payments?externalreferenceid=';
+  private _paymentPutUrl = 'https://dev-application.nelnet.io/v1/payments';
+  data: any = {};
   private authToken: IAuthorizationToken;
-  private storedSsn: string;
   private paymentHistory = new Subject<IPaymentDetails>();
   paymentHistory$ = this.paymentHistory.asObservable();
   private externalReferenceIdSub = Subscription;
   storedPaymentHistory: IPaymentDetails;
 
-  constructor(private _http: HttpClient,
-    private _authSvc: AuthenticationService,
-    private _msgSvc: MessageService) { 
+  constructor(private _http: HttpClient, private _authSvc: AuthenticationService) { 
+    this.getData();
+    this.getPaymentDetails();
+  }
+  
+  getData(){
+    return this._http.get(this._paymentPutUrl)
+      .map((res: Response)=> res.json())
   }
 
-  getPaymentDetails(externalReferenceId: string): Observable<IPaymentDetails> {
-    //this.ssnSub = this._msgSvc.searchSsn$.subscribe(data => this.storedSsn = data);
-    debugger;
+  getPaymentDetails(){
     this.authToken = this._authSvc.storedToken;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.authToken.accessToken
+      }),
+      observe: 'response'};
 
+      this.getData().subscribe(data => {
+        console.log(data);
+        this.data = data;
+      });
+
+      return this._http.get<IPaymentDetails>(
+        this._paymentHistoryUrl,
+        { headers:new HttpHeaders({ 'Authorization': 'Bearer ' + this.authToken.accessToken }), observe: 'response' }
+      ).map((response: any) => {
+        let paymentData: IPaymentDetails;
+        if (response.body.data.length > 0){
+          paymentData = response.body.data[0];
+          this.paymentHistory.next(paymentData);
+          this.storedPaymentHistory = paymentData;
+          return paymentData;
+        }else{
+          this.paymentHistory.next(paymentData);
+          this.storedPaymentHistory = paymentData;
+          return paymentData;
+        }
+      });
+    
+  }
+
+ /* private _paymentHistoryUrl = 'https://dev-application.nelnet.io/v1/payments?externalreferenceid=';
+  private _paymentPutUrl = 'https://dev-application.nelnet.io/v1/payments';
+  private authToken: IAuthorizationToken;
+  private storedExternalReferenceId: string;
+  private paymentHistory = new Subject<IPaymentDetails>();
+  paymentHistory$ = this.paymentHistory.asObservable();
+  private externalReferenceIdSub = Subscription;
+  storedPaymentHistory: IPaymentDetails;
+
+  constructor(private _http: HttpClient, private _authSvc: AuthenticationService) { }
+
+  getPaymentDetails(externalReferenceId: string): Observable<IPaymentDetails> {
+    this.authToken = this._authSvc.storedToken;
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.authToken.accessToken
@@ -58,5 +103,5 @@ export class PaymentsService {
         return paymentData;
       }
     });
-  }
+  }*/
 }

@@ -13,10 +13,10 @@ import { IBorrower } from './../../models/borrower';
 export class AccountComponent implements OnInit {
   
   @Input() isWidget: true;
+  @Input() borrower: IBorrower;
   accountSubscription: Subscription;
   accountDetails: IAccountDetails;
   accountData: IAccountData;
-  borrower: IBorrower;
   borrSubscription: Subscription;
 
   constructor(private _acctService: AccountService, private _borrSvc: BorrowerDemographicsService) { }

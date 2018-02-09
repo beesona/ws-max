@@ -46,5 +46,22 @@ export interface IBorrowerData {
     data: IBorrower;
 }
     
-    
-    
+export class Address implements IAddress {
+    street1 = ''
+    street2 = '';
+    city = '';
+    state = '';
+    postalCode = '';
+    countryCode = '';
+    type = '';
+  }
+  
+  export class Phone implements IPhone {
+    phoneNumber = '';
+    type = '';
+  }
+  
+  export class Email implements IEmailAddress {
+    emailAddress = '';
+    type = '';
+  }

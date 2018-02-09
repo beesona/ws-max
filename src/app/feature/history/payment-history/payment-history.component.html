@@ -1,3 +1,44 @@
-<p>
-    Payment History Goes Here
-</p>
+<hr>
+<h4>Payment History</h4>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Client ID</th>
+                <th>Payer ID</th>
+                <th>Payer Type</th>
+                <th>Tenant ID</th>
+                <th>Status</th>
+                <th>Source</th>
+                <th>Loan ID</th>
+                <th>Amount</th>
+                <th>Effective Date</th>
+                <th>External Reference ID</th>
+                <th>Payment Type</th>
+                <th>Requested Date</th>
+                <th>Account Type</th>
+                <th>Bank Account</th>
+                <th>Routing Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{paymentData.clientId}}</th>
+                <td>{{paymentData.payerId}}</td>
+                <td>{{paymentData.payerType}}</td>
+                <td>{{paymentData.tenantId}}</td>
+                <td>{{paymentData.status}}</td>
+                <td>{{paymentData.source}}</td>
+                <td>{{paymentData.loanId}}</td>
+                <td>{{paymentData.amount}} | currency: " $"</td>
+                <td>{{paymentData.effectiveDate | date:'MM/dd/yyyy'}}</td>
+                <td>{{paymentData.externalReferenceId}}</td>
+                <td>{{paymentData.paymentType}}</td>
+                <td>{{paymentData.requestedDate | date:'MM/dd/yyyy'}}</td>
+                <td>{{paymentData.achDetails.accountType}}</td>
+                <td>{{paymentData.achDetails.bankAccount}}</td>
+                <td>{{paymentData.achDetails.routingNumber}}</td> 
+            </tr>            
+        </tbody>
+    </table>
+</div>

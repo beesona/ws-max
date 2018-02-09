@@ -2,7 +2,7 @@
     <ng-template dbw></ng-template>
 
     <div *ngIf="!borrower">
-        <h2>Welcome to Workspace <span style="font-size:.5em;">(v2.0.1.0)</span>
+        <h2>Welcome to Agent Portal <span style="font-size:.5em;">(v0.0.1.0)</span>
             <span class="pull-right">
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
                 <i class="fa fa-facebook-square" aria-hidden="true"></i>
@@ -18,7 +18,7 @@
                 You can adjust your display settings and personal preferences on the <a href="Settings">Settings Page</a>.
             </li>
             <li>
-                Want to see what's new with Workspace? Get questions answered by the developers or voice your opinion on our <a href="blog">our blog</a> or follow us on <a href="twitter">Twitter</a>!
+                Want to see what's new with Agent Portal? Get questions answered by the developers or voice your opinion on our <a href="blog">our blog</a> or follow us on <a href="twitter">Twitter</a>!
             </li>
         </ul>
         <h3>Useful Links</h3>
@@ -36,12 +36,20 @@
         <widget-container [widgetTitle]="'Demographics'" [color]="'default'">
             <app-primary-contact-form [isWidget]="true"></app-primary-contact-form>
         </widget-container>
+<<<<<<< HEAD
         <widget-container [widgetTitle]="'Account Information'" [color]="'default'">
           <app-account></app-account>
         </widget-container>
         <widget-container [widgetTitle]="'Recent Activity'" [color]="'default'"></widget-container>
         <widget-container [widgetTitle]="'Test Widget'" [color]="'default'">
             <app-history></app-history>
+=======
+        <widget-container [widgetTitle]="'Account Information'" [color]="'default'"></widget-container>
+        <widget-container [widgetTitle]="'Activity'" [color]="'default'">
+            <app-activities></app-activities>
+        </widget-container>
+        <widget-container [widgetTitle]="'Test Widget'" [color]="'default'">            
+>>>>>>> origin/michelle_dev
         </widget-container>
     </div>
 </div>

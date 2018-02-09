@@ -8,6 +8,8 @@ import { BorrowerDemographicsService } from '../services/borrower/borrower-demog
 import { WidgetDirective } from '../feature/dashboard/widget.directive';
 import { HistoryComponent } from './history/history.component';
 import { WidgetContainerComponent } from './dashboard/widget-container.component';
+import { ActivitiesComponent } from './activities/activities/activities.component';
+import { PaymentHistoryComponent } from './history/payment-history/payment-history.component';
 
 @NgModule({
   imports: [
@@ -22,6 +24,8 @@ import { WidgetContainerComponent } from './dashboard/widget-container.component
     HistoryComponent,
     WidgetContainerComponent,
     PrimaryContactFormComponent,
+    ActivitiesComponent,
+    PaymentHistoryComponent
   ],
   providers: [BorrowerDemographicsService],
   entryComponents: [PrimaryContactFormComponent, AccountComponent, HistoryComponent]

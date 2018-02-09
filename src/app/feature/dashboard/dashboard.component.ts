@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(){
-
+    this.borrower = this._borrSvc.storedBorrower;
     this.borrSubscription = this._borrSvc.borrower$.subscribe(
       borr => {        
         if (borr) {

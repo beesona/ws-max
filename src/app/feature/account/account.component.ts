@@ -1,43 +1,51 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IAccountData, IAccountDetails, ILender } from './../../models/account';
+import { AccountService } from '../../services/account.service';
 import { Subscription }   from 'rxjs/Subscription';
-
-import { AccountService } from '../../services/account.service'
-import { MessageService } from '../../services/message.service'
-import { IAccount, IGroup, ILoan } from '../../models/account';
+import { BorrowerDemographicsService } from './../../services/borrower/borrower-demographics.service';
+import { IBorrower } from './../../models/borrower';
 
 @Component({
-  selector: 'app-account',
+  selector: 'app-accounts',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
+  
+  @Input() isWidget: true;
+  @Input() borrower: IBorrower;
+  accountSubscription: Subscription;
+  accountDetails: IAccountDetails;
+  accountData: IAccountData;
+  borrSubscription: Subscription;
 
-  @Input() data: any;
-  subscription: Subscription;
-  account: IAccount;
-  groups: IGroup[];
-  loans: ILoan[];
-  constructor(private _acctSvc: AccountService, 
-    private _msgSvc: MessageService) { }
+  constructor(private _acctService: AccountService, private _borrSvc: BorrowerDemographicsService) { }
 
   ngOnInit() {
-    if (this._acctSvc.storedGroupsAndLoans != undefined){
-      this.account = this._acctSvc.storedGroupsAndLoans;
-      this.groups = this._acctSvc.storedGroupsAndLoans.Groups;
-      this.loans = this._acctSvc.storedGroupsAndLoans.Loans;
-    }else{
-      if (!!this._msgSvc.storedSearchSsn){
-        this._acctSvc.setGroupsAndLoans(this._msgSvc.storedSearchSsn);
-      }
-    } 
-    this.subscription = this._acctSvc.groupsAndLoans$.subscribe(
-      acct => {        
-        if (acct) {
-          this.account = acct;
-          this.groups = acct.Groups;
-          this.loans = acct.Loans;
+    if (this._borrSvc.storedBorrower != undefined){
+      this.borrower = this._borrSvc.storedBorrower;
+      this.GetAccountData();
+    }
+    this.borrSubscription = this._borrSvc.borrower$.subscribe(
+      borr => {        
+        if (borr) {
+          this.borrower = borr;
+          this.GetAccountData();
+        }else{
+          //clear the history
         }
-      })
+    })
   }
 
+  GetAccountData(){
+  this._acctService.getAccounts(this.borrower.externalReferenceId).subscribe(
+    accountData => {
+      if (accountData){
+        this.accountData = accountData;
+        console.log(this.accountData);
+      }else{
+        //clear the history
+      }
+    })
+  }
 }

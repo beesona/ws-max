@@ -7,7 +7,7 @@ import { MessageService } from '../../../services/message.service'
 import { MaskSsnPipe } from '../../../shared/mask-ssn.pipe';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IBorrower, IBorrowerData } from '../../../models/borrower';
-import { IAccount } from '../../../models/account'
+import { IAccountData } from '../../../models/account'
 import { HttpResponse } from 'selenium-webdriver/http';
 
 @Component({
@@ -31,11 +31,11 @@ export class HeaderComponent implements OnInit {
   set borrower(value:IBorrower){
       this._borrower = value;
   } 
-  _accounts: IAccount;
-  get accounts(): IAccount {
+  _accounts: IAccountData;
+  get accounts(): IAccountData {
       return this._accounts;
   }
-  set accounts(value:IAccount){
+  set accounts(value:IAccountData){
       this._accounts = value;
   } 
 

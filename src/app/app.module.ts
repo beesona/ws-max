@@ -20,12 +20,14 @@ import { HistoryNotesService } from './services/history-notes.service';
 import { MessageService } from './services/message.service';
 import { PaymentsService } from './services/payments.service';
 import { ActivitiesComponent } from './feature/activities/activities/activities.component';
+import { PaymentsComponent } from './feature/payments/payments.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'demographics', component: PrimaryContactFormComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'activity', component: ActivitiesComponent },
+  { path: 'payments', component: PaymentsComponent },
   { path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'

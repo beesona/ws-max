@@ -27,5 +27,7 @@
 }
 .db-widget-content{
     padding: 6px;
-    color: #606060;    
+    color: #606060; 
+    background: #fff;
+    border: solid 2px #a1c7e4; 
 }

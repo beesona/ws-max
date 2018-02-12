@@ -1,0 +1,29 @@
+
+.blue-info {
+    color: #337ab7;
+}
+
+.centered-content {
+    border-top: solid  1px #999;
+    padding-top: 15px;
+}
+.divider {
+    border-top: solid  1px #999;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+    display: inline;
+}
+
+li:nth-child(1){
+    padding-right: 45px;
+}
+
+li:nth-child(2){
+    float: right;
+}

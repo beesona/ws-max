@@ -1,19 +1,85 @@
 <wizard #wizard>
-  <wizard-step stepTitle="Steptitle 1">
+  <wizard-step stepTitle="Step 1 - Payment Information">
     <div class="centered-content">
-      <div>
-        Content: Step 1
-      </div>
-
-      <div class="btn-group">
-        <button type="button" class="btn btn-secondary" nextStep>Continue</button>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="mb-4">
+                  <div class="card-body">
+                    <ul>
+                      <li>
+                        <strong>Past Due:</strong>
+                      </li>
+                      <li>
+                        $6,451.80 <i class="fa fa-question-circle blue-info fa-lg" aria-hidden="true"></i>
+                      </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <strong>Current Amount:</strong>
+                        </li>
+                        <li>
+                            $255.31 <i class="fa fa-question-circle blue-info fa-lg" aria-hidden="true"></i>
+                        </li>
+                      </ul>
+                      <ul>
+                          <li>
+                              <strong>Total Due:</strong>
+                          </li>
+                          <li>
+                              $6,707.11  <i class="fa fa-question-circle blue-info fa-lg" aria-hidden="true"></i>
+                          </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                
+                            </li>
+                            <li>
+                                <button>Change Total Payment</button> <i class="fa fa-question-circle blue-info fa-lg" aria-hidden="true"></i>
+                            </li>                            
+                          </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class=" mb-4">
+                  <div class="card-body">
+                    <p>
+                      <strong>Next Due Date 10/24/2018</strong>
+                      <br> Current Amount Due includes all loans with a payment due in the next 30 days.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-4">
+                  <div class="card-body">
+                    <p>
+                      <strong>All Payment must be entered by 4:00 PM ET to be posted the next business day.</strong>
+                      <br> Payment enterered after 4:00 PM ET will be processed in two business days. Business days do not include
+                      weekends and holidays.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <hr class="divider">
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary" nextStep>Continue</button>
+          </div>
+        </div>
       </div>
     </div>
   </wizard-step>
-  <wizard-step stepTitle="Steptitle 2">
+  <wizard-step stepTitle="Step 2 - Payment Confirmation">
     <div class="centered-content">
       <div>
-        Content: Step 2
+        Payment Confirmation Area
       </div>
 
       <div class="btn-group">
@@ -22,10 +88,10 @@
       </div>
     </div>
   </wizard-step>
-  <wizard-step stepTitle="Steptitle 3">
+  <wizard-step stepTitle=" Step 3 - Payment Review">
     <div class="centered-content">
       <div>
-        Content: Step 3
+        Payment Review Area
       </div>
 
       <div class="btn-group">

@@ -20,12 +20,15 @@ import { HistoryNotesService } from './services/history-notes.service';
 import { MessageService } from './services/message.service';
 import { PaymentsService } from './services/payments.service';
 import { ActivitiesComponent } from './feature/activities/activities/activities.component';
+import { PaymentsComponent } from './feature/payments/payments.component';
+import { ArchwizardModule  } from 'ng2-archwizard';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'demographics', component: PrimaryContactFormComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'activity', component: ActivitiesComponent },
+  { path: 'payments', component: PaymentsComponent },
   { path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'
@@ -51,7 +54,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     HttpModule,
     FeaturesModule,
-    NavigationModule
+    NavigationModule,
+    ArchwizardModule 
   ],
   providers: [
     BorrowerDemographicsService, AccountService, HistoryNotesService, AuthenticationService, MessageService, PaymentsService],

@@ -7,6 +7,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import { IBorrower, IBorrowerData } from './../models/borrower';
 import { IPaymentDetails, IPaymentData } from '../models/paymentHistory';
+import { IPaymentSubmitData } from '../models/postedPayments';
 import { AuthenticationService } from './authentication.service';
 import { IAuthorizationToken } from '../models/authorizationToken';
 import { HttpResponse } from '@angular/common/http/src/response';
@@ -31,6 +32,7 @@ export class PaymentsService {
   constructor(private _http: HttpClient, private _authSvc: AuthenticationService, private _borrSvc: BorrowerDemographicsService) { 
   }
 
+  // GET PAYMENT HISTORY
   getPaymentDetails(extRefId: string): Observable<IPaymentData> {
     this.authToken = this._authSvc.storedToken;
     const httpOptions = {
@@ -41,6 +43,34 @@ export class PaymentsService {
     };
 
     return this._http.get<IPaymentData>(
+      this._paymentHistoryUrl + extRefId, 
+      { headers:new HttpHeaders({ 'Authorization': 'Bearer ' + this.authToken.accessToken }), observe: 'response' }
+    ).map((response: any) => {
+      let paymentData: IPaymentData;
+      if (response.body.data.length > 0){
+        paymentData = response.body.data[0];
+        this.payments.next(paymentData);
+        this.storedPayments = paymentData;
+        return paymentData;
+      }else{
+        this.payments.next(paymentData);
+        this.storedPayments = paymentData;
+        return paymentData;
+      }
+    });
+  }
+
+  //SUBMIT BORROWER PAYMENT
+  postPayments(extRefId: string): Observable<IPaymentData> {
+    this.authToken = this._authSvc.storedToken;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.authToken.accessToken
+      }),
+      observe: 'response'
+    };
+
+    return this._http.get<IPaymentSubmitData>(
       this._paymentHistoryUrl + extRefId, 
       { headers:new HttpHeaders({ 'Authorization': 'Bearer ' + this.authToken.accessToken }), observe: 'response' }
     ).map((response: any) => {

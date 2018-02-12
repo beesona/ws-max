@@ -10,12 +10,15 @@ import { HistoryComponent } from './history/history.component';
 import { WidgetContainerComponent } from './dashboard/widget-container.component';
 import { ActivitiesComponent } from './activities/activities/activities.component';
 import { PaymentHistoryComponent } from './history/payment-history/payment-history.component';
+import { PaymentsComponent } from './payments/payments.component';
+import { ArchwizardModule  } from 'ng2-archwizard';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ArchwizardModule
   ],
   declarations: [
     DashboardComponent,
@@ -26,7 +29,8 @@ import { PaymentHistoryComponent } from './history/payment-history/payment-histo
     PrimaryContactFormComponent,
     ActivitiesComponent,
     PaymentHistoryComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    PaymentsComponent
   ],
   providers: [BorrowerDemographicsService],
   entryComponents: [PrimaryContactFormComponent, AccountComponent, HistoryComponent]

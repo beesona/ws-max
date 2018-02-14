@@ -1,6 +1,7 @@
 
 
 export interface ICustomData {
+    borrowerId: string;
 }
 
 export interface IAchDetails {
@@ -33,6 +34,7 @@ export interface IPaymentDetails {
     relatedId: string;
     createdDate: Date;
     updatedDate: Date;
+    
 }
 
 export interface IPaymentData {

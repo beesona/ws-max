@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import "~font-awesome/css/font-awesome.css";
+
 .theme-color-red{
     background-color: #c62323;
     color: #fff;

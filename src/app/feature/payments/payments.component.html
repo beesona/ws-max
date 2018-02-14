@@ -1,0 +1,258 @@
+<wizard #wizard>
+  <wizard-step stepTitle="Step 1 - Payment Information">
+    <div class="centered-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="mb-4">
+                  <div class="card-body">
+                    <ul>
+                      <li>
+                        <strong>Past Due:</strong>
+                      </li>
+                      <li>
+                        $6,451.80
+                        <i class="fa fa-question-circle blue-info fa-lg" aria-hidden="true"></i>
+                      </li>
+                    </ul>
+                    <ul>
+                      <li>
+                        <strong>Current Amount:</strong>
+                      </li>
+                      <li>
+                        $255.31
+                        <i class="fa fa-question-circle blue-info fa-lg" aria-hidden="true"></i>
+                      </li>
+                    </ul>
+                    <ul>
+                      <li>
+                        <strong>Total Due:</strong>
+                      </li>
+                      <li>
+                        $6,707.11
+                        <i class="fa fa-question-circle blue-info fa-lg" aria-hidden="true"></i>
+                      </li>
+                    </ul>
+                    <ul>
+                      <li>
+
+                      </li>
+                      <li>
+                        <button (click)="toggle()">Change Total Payment</button>
+                        <i class="fa fa-question-circle blue-info fa-lg" aria-hidden="true"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class=" mb-4">
+                  <div class="card-body">
+                    <p>
+                      <strong>Next Due Date 10/24/2018</strong>
+                      <br> Current Amount Due includes all loans with a payment due in the next 30 days.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-4">
+                  <div class="card-body">
+                    <p>
+                      <strong>All Payment must be entered by 4:00 PM ET to be posted the next business day.</strong>
+                      <br> Payment enterered after 4:00 PM ET will be processed in two business days. Business days do not include
+                      weekends and holidays.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngIf="showPymntChange">
+            <hr class="divider">
+            <form class="form-inline">
+              <div class="form-group">
+                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                <div class="input-group">
+                  <div class="input-group-addon">$</div>
+                  <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Enter Payment</button>
+            </form>
+          </div>
+
+
+          <div class="paymentArea">
+            <hr class="divider">
+            <strong>Select a Payment Method</strong>
+
+            <accordion [showArrows]="true">
+              <accordion-group>
+                <accordion-heading>
+                  <div class="sm-heading">ACH PAYMENT</div>
+                </accordion-heading>
+                <div class="row">
+                  <div class="table-responsive">
+                    <table class="table credit-card-table">
+                      <tbody>
+                        <tr class="form-group">
+                          <td>
+                            <label for="exampleInputName2">Account Type</label>
+                          </td>
+                          <td>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Checking
+                              </label>
+                            </div>
+                          </td>
+                          <td>
+                            <label for="cardtype">Card Type</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="cardtype" placeholder="select card type">
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </accordion-group>
+
+              <accordion-group>
+                <accordion-heading>
+                  <div class="sm-heading">CREDIT CARD</div>
+                </accordion-heading>
+                <div class="row">
+                  <div class="table-responsive">
+                    <table class="table credit-card-table">
+                      <tbody>
+                        <tr class="form-group">
+                          <td>
+                            <label for="exampleInputName2">Cardholder Name</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="Cardholder Name">
+                          </td>
+                          <td>
+                            <label for="cardtype">Card Type</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="cardtype" placeholder="select card type">
+                          </td>
+                        </tr>
+                        <tr class="form-group">
+                          <td>
+                            <label for="exampleInputaddress1">Address 1</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="exampleInputaddress1" placeholder="address one">
+                          </td>
+                          <td>
+                            <label for="cardnumber">Card Number</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="cardnumber" placeholder="enter card number">
+                          </td>
+                        </tr>
+                        <tr class="form-group">
+                          <td>
+                            <label for="exampleInputaddress3">Address 2</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="exampleInputaddress3" placeholder="address two">
+                          </td>
+                          <td>
+                            <label for="cvv2code">CVV2</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="cvv2code" placeholder="enter security code">
+                          </td>
+                        </tr>
+                        <tr class="form-group">
+                          <td>
+                            <label for="city">City</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="city" placeholder="city">
+                          </td>
+                          <td>
+                            <label for="expdate">Expiration Date</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="expdate" placeholder="expiration date">
+                          </td>
+                        </tr>
+                        <tr class="form-group">
+                          <td>
+                            <label for="state">State</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="state" placeholder="state">
+                          </td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr class="form-group">
+                          <td>
+                            <label for="zip">Zip</label>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" id="zip" placeholder="zipcode">
+                          </td>
+                          <td></td>
+                          <td>
+                            <div class="text-center">
+                              <button type="submit" class="btn btn-success btn-lg" ng-disabled="!paymentForm.$valid" ng-click="ConfirmPayment()">
+                                Proceed to Confirmation
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </accordion-group>
+            </accordion>
+
+          </div>
+          <hr class="divider">
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary" nextStep>Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </wizard-step>
+  <wizard-step stepTitle="Step 2 - Payment Review">
+    <div class="centered-content">
+      <div>
+        Payment Review Area
+      </div>
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary" previousStep>Back</button>
+        <button type="button" class="btn btn-secondary" nextStep>Continue</button>
+      </div>
+    </div>
+  </wizard-step>
+  <wizard-step stepTitle=" Step 3 - Payment Confirmation">
+    <div class="centered-content">
+      <div>
+        Payment Confirmation Area
+      </div>
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary" previousStep>Back</button>
+        <button type="button" class="btn btn-secondary" resetWizard>Reset</button>
+      </div>
+    </div>
+  </wizard-step>
+</wizard>

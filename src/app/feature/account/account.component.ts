@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { IAccountData, IAccountDetails, ILender } from './../../models/account';
 import { AccountService } from '../../services/account.service';
 import { Subscription }   from 'rxjs/Subscription';
@@ -42,7 +43,6 @@ export class AccountComponent implements OnInit {
     accountData => {
       if (accountData){
         this.accountData = accountData;
-        console.log(this.accountData);
       }else{
         //clear the history
       }

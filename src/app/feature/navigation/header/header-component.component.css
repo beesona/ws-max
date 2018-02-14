@@ -1,53 +1,8 @@
-.header-name{
-    color: #d3d3d3;
-    font-size: 1.2em;
-}
-.header-hide-button{
-    display: none;
-}
-@media only screen and (max-width: 1010px) {
-    .header-search {
-        display: none;
-    }
-    .header-hide-button{
-        display: block;
-    }
-}
-.header-info{
-    border-left: 1px solid #3d3d3d;
-    padding-left: 5px;
-    margin-top: 5px;
-    color: #9d9d9d;
+.search-ssn-addon {
+    border-radius: 20px 0 0 20px;
+    background: white;
 }
 
-.header-search{
-    position: fixed;
-    margin: 0px;
-    padding:0px;
-    height: 50px;
-    right: 0px;
-    top:0px;
-}
-
-input{
-    top: 0px;
-    position:  absolute;
-    right: 120px;
-    border: none;
-    height: 50px;
-    width: 176px !important;
-}
-button{
-    border: none;
-    border-radius: 0px;
-    height: 50px;
-    background-color: #9d9d9d;
-    color: #FFF;
-    width: 120px;
-    font-size: 1.3em;
-    top:0px;
-}
-
-.navbar-toggle {
-    margin: 0px;
+#searchSsn {
+    background: white;
 }

@@ -1,39 +1,48 @@
-<div class="navbar-fixed-left">
-  <ul class="left-nav-items">
-    <li class="left-nav-item text-center">
-      <a [routerLink]="['/dashboard']" routerLinkActive="active">
-        <i class="fa fa-tachometer" aria-hidden="true"></i>
-        <br/>
-        <span class="link-title">Dashboard</span>
-      </a>
-    </li>
-    <li class="left-nav-item text-center">
-      <a [routerLink]="['/demographics']" routerLinkActive="active">
-        <i class="fa fa-address-book" aria-hidden="true"></i>
-        <br/>
-        <span class="link-title">Demographics</span>
-      </a>
-    </li>
-    <li class="left-nav-item text-center">
-      <a [routerLink]="['/activity']" routerLinkActive="active">
-        <i class="fa fa-history" aria-hidden="true"></i>
-        <br/>
-        <span class="link-title">Activity</span>
-      </a>
-    </li>
-    <li class="left-nav-item text-center">
-      <a [routerLink]="['/payments']" routerLinkActive="payments">
-        <i class="fa fa-money" aria-hidden="true"></i>
-        <br/>
-        <span class="link-title">Payments</span>
-      </a>
-    </li>
-    <li class="left-nav-item text-center">
-      <a href="#">
-        <i class="fa fa-life-ring" aria-hidden="true"></i>
-        <br/>
-        <span class="link-title">IDR App</span>
-      </a>
-    </li>
-  </ul>
+<div class="sidebar" data-background-color="brown" data-active-color="info">
+  <!--
+  Tip 1: you can change the color of the sidebar's background using: data-background-color="white | brown"
+  Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+-->
+  <div class="logo">
+    <a href="/" class="simple-text logo-mini">
+      <i class="fa fa-user-circle" aria-hidden="true"></i>
+    </a>
+    <a href="/" class="simple-text logo-normal">
+      Agent Portal
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="active">
+        <a [routerLink]="['/dashboard']" routerLinkActive="active">
+          <i class="fa fa-tachometer" aria-hidden="true"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/demographics']" routerLinkActive="active">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+          <p>Demographics</p>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/activity']" routerLinkActive="active">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <p>Activity</p>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/payments']" routerLinkActive="payments">
+          <i class="fa fa-money" aria-hidden="true"></i>
+          <p>Payments</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-life-ring" aria-hidden="true"></i>
+          <p>IDR App</p>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>

@@ -1,15 +1,22 @@
-.row {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-}
-
-.account-widget{
+.account-widget {
     margin-top: 1rem;
     padding: 0.5rem;
     overflow: hidden;
 }
 
+.account-widget h3 {
+    margin-top: 0;
+}
+
 .account-widget table {
     background: white;
     overflow-x: scroll;
+}
+
+.card-content {
+    background: whitesmoke;
+}
+
+.numbers {
+    font-weight: 700;
 }

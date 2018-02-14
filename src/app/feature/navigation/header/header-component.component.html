@@ -1,32 +1,30 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse navbar-fixed-top" style="border-radius:0%; border: 0px;margin-bottom: 0px;">
+<nav class="navbar navbar-default"> <!-- consider adding back navbbar-fixed-top -->
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMenu" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><i class="fa fa-user-circle" style="color: #4286f4;" aria-hidden="true"></i> Agent Portal</a>
-      </div>
-  
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbarMenu">
-        <ul class="nav navbar-nav"  *ngIf="!!borrower">
-          <li class="header-info">
-                <span style="font-size: .8em;"><strong>INBOUND CALL</strong> <i>with</i> <strong>ADAM BEESON</strong> <i>about</i> 
-                  <a href="#" style="padding: 0px; margin: 0px; display: inline;">(Change)</a></span>
-                <br />
-                {{borrower.firstName}} {{borrower.middleInitial}} {{borrower.lastName}} <strong>{{borrower?.ssn | maskSsn}}</strong>
-            <span class="sr-only">(current)</span></li>
-        </ul>
-        <form [formGroup]="searchSsnForm" (ngSubmit)="search(searchSsnForm.value)" class="navbar-form navbar-right header-search">
-          <div class="form-group">
-            <input formControlName="searchSsn" type="text" maxlength="9" class="form-control" placeholder="SSN/ACCT #" (ngModel)="searchSsn">
-          </div>
-          <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
-        </form>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+        <div class="navbar-minimize">
+            <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-menu-alt"></i></button>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Dashboard</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="nav navbar-nav"  *ngIf="!!borrower">
+                <li class="header-info">
+                    <span style="font-size: .8em;"><strong>INBOUND CALL</strong> <i>with</i> <strong>ADAM BEESON</strong> <i>about</i> 
+                        <a href="#" style="padding: 0px; margin: 0px; display: inline;">(Change)</a></span>
+                    <br />
+                    {{borrower.firstName}} {{borrower.middleInitial}} {{borrower.lastName}} <strong>{{borrower?.ssn}}</strong>
+                <span class="sr-only">(current)</span></li>
+            </ul>
+            <form [formGroup]="searchSsnForm" (ngSubmit)="search(searchSsnForm.value)" class="navbar-form navbar-right header-search">
+                <div class="input-group">
+                    <span class="input-group-addon search-ssn-addon">SSN/ACCT #: </span>
+                    <input formControlName="searchSsn" id="searchSsn" type="text" maxlength="9" class="form-control" placeholder="SSN/ACCT #" (ngModel)="searchSsn">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-fill btn-default"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>

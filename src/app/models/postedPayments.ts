@@ -26,7 +26,7 @@ export interface IPaymentSubmitData {
     createdDate: Date;
     updatedDate: Date;
     achDetails: IAchDetails;
-    borrowerID: string;
+    borrowerId: string;
 }
 
 

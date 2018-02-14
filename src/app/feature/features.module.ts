@@ -12,13 +12,15 @@ import { ActivitiesComponent } from './activities/activities/activities.componen
 import { PaymentHistoryComponent } from './history/payment-history/payment-history.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { ArchwizardModule  } from 'ng2-archwizard';
+import { AccordionModule } from 'ng2-accordion';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    ArchwizardModule
+    ArchwizardModule,
+    AccordionModule
   ],
   declarations: [
     DashboardComponent,

@@ -20,6 +20,7 @@ export class PaymentsService {
 
   private _paymentHistoryUrl = 'https://dev-application.nelnet.io/v1/payments?externalreferenceid=';
   private _paymentPutUrl = 'https://dev-application.nelnet.io/v1/payments';
+  private _paymentHistoryBorrower = 'https://dev-application.nelnet.io/v1/payments?borrowerid=';
   data: any = {};
   private authToken: IAuthorizationToken;
   private payments = new Subject<IPaymentData>();
@@ -28,12 +29,13 @@ export class PaymentsService {
   storedPayments: IPaymentData;
   storedBorrower: IBorrower;
   private borrRefId: string;
+  private borrId: string;
 
   constructor(private _http: HttpClient, private _authSvc: AuthenticationService, private _borrSvc: BorrowerDemographicsService) { 
   }
 
   // GET PAYMENT HISTORY
-  getPaymentDetails(extRefId: string): Observable<IPaymentData> {
+  getPaymentDetails(borrId: string): Observable<IPaymentData> {
     this.authToken = this._authSvc.storedToken;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -43,7 +45,7 @@ export class PaymentsService {
     };
 
     return this._http.get<IPaymentData>(
-      this._paymentHistoryUrl + extRefId, 
+      this._paymentHistoryBorrower + borrId, 
       { headers:new HttpHeaders({ 'Authorization': 'Bearer ' + this.authToken.accessToken }), observe: 'response' }
     ).map((response: any) => {
       let paymentData: IPaymentData;

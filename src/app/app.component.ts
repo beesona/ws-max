@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { BorrowerDemographicsService } from './services/borrower/borrower-demographics.service';
 import { MessageService } from './services/message.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AuthenticationService } from './services/authentication.service';
 import { HttpModule } from '@angular/http';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,13 @@ export class AppComponent {
   title = 'Agent Portal';
   searchSsn: string = '';
 
-  constructor(private _borrowerDemographicsService: BorrowerDemographicsService, private _authSvc: AuthenticationService) { }
+  constructor(private _borrowerDemographicsService: BorrowerDemographicsService, 
+    private _authSvc: AuthenticationService,
+    public _toastr: ToastsManager,
+    private vRef: ViewContainerRef) {
+
+      this._toastr.setRootViewContainerRef(vRef);
+     }
 
   //generate borrower data on load during development
   ngOnInit(): void {

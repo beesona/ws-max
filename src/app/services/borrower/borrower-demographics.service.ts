@@ -6,7 +6,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
-import { IBorrower, IBorrowerData } from '../../models/borrower';
+import { IBorrower, IBorrowerData, Borrower } from '../../models/borrower';
 import { AuthenticationService } from '../authentication.service';
 import { IAuthorizationToken } from '../../models/authorizationToken';
 import { HttpResponse } from '@angular/common/http/src/response';
@@ -26,11 +26,12 @@ export class BorrowerDemographicsService {
   storedBorrower: IBorrower;
 
   constructor(private _http: HttpClient,
-    private _authSvc: AuthenticationService,
-    private _msgSvc: MessageService) { 
+    private _authSvc: AuthenticationService) { 
   }
 
   getBorrowerDemographics(ssn: string): Observable<IBorrower> {
+    this.borrower.next(new Borrower);
+    this.storedBorrower = new Borrower;
     this.authToken = this._authSvc.storedToken;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -38,8 +39,6 @@ export class BorrowerDemographicsService {
       }),
       observe: 'response'
     };
-
-    //this._msgSvc
 
     return this._http.get<IBorrower>(
       this._borrowerUrl + ssn, 
@@ -52,9 +51,10 @@ export class BorrowerDemographicsService {
         this.storedBorrower = borrowerData;
         return borrowerData;
       }else{
-        this.borrower.next(borrowerData);
-        this.storedBorrower = borrowerData;
-        return borrowerData;
+        //we errored out.
+        this.borrower.next(new Borrower);
+        this.storedBorrower = new Borrower;
+        return new Borrower;
       }
     });
   }

@@ -18,7 +18,6 @@ export class MessageService {
   searchSsn$ = this.searchSsn.asObservable();
 
   constructor(
-    private _borrSvc: BorrowerDemographicsService,
     private _acctSvc: AccountService,
     private _paymentSvc: PaymentsService
   ){ }
@@ -34,8 +33,6 @@ export class MessageService {
   }
 
   clearedStoredData(){
-    this._borrSvc.storedBorrower = null;
-    this._acctSvc.storedAccounts = null;
-    this._paymentSvc.storedPayments = null;
+
   }
 }

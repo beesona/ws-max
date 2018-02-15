@@ -28,3 +28,9 @@
 .form-control{
     border-radius: 0px !important;
 }
+.navbar .navbar-nav > li > a.btn.btn-xs, .btn-xs{
+    border-radius: 6px;
+}
+.navbar .navbar-nav > li > a.btn.btn-sm, .btn-sm{
+    border-radius: 6px;
+}

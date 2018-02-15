@@ -1,30 +1,31 @@
-<nav class="navbar navbar-default"> <!-- consider adding back navbbar-fixed-top -->
+<nav class="navbar navbar-fixed navbar-default"> <!-- consider adding back navbbar-fixed-top -->
     <div class="container-fluid">
-        <div class="navbar-minimize">
-            <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-menu-alt"></i></button>
-        </div>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Dashboard</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbarMenu">
-            <ul class="nav navbar-nav"  *ngIf="!!borrower">
-                <li class="header-info">
-                    <span style="font-size: .8em;"><strong>INBOUND CALL</strong> <i>with</i> <strong>ADAM BEESON</strong> <i>about</i> 
-                        <a href="#" style="padding: 0px; margin: 0px; display: inline;">(Change)</a></span>
-                    <br />
-                    {{borrower.firstName}} {{borrower.middleInitial}} {{borrower.lastName}} <strong>{{borrower?.ssn}}</strong>
-                <span class="sr-only">(current)</span></li>
-            </ul>
-            <form [formGroup]="searchSsnForm" (ngSubmit)="search(searchSsnForm.value)" class="navbar-form navbar-right header-search">
-                <div class="input-group">
-                    <span class="input-group-addon search-ssn-addon">SSN/ACCT #: </span>
-                    <input formControlName="searchSsn" id="searchSsn" type="text" maxlength="9" class="form-control" placeholder="SSN/ACCT #" (ngModel)="searchSsn">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-fill btn-default"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
-                    </span>
+        <div class="row">
+            <div class="col-md-1">
+                <div class="navbar-minimize">
+                    <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-menu-alt"></i></button>
                 </div>
-            </form>
+            </div>
+            <div class="col-md-6">
+                <div class="navbar-header" *ngIf="!!borrower">
+                    <span class="label label-xs label-default">Current</span>
+                    <a href="#" class="label label-xs label-default change-caller">Change</a>
+                    <br>
+                    <strong>INBOUND CALL</strong> <i>with</i> <strong>ADAM BEESON</strong> <i>about</i> 
+                    {{borrower.firstName}} {{borrower.middleInitial}} {{borrower.lastName}} <strong>{{borrower?.ssn}}</strong>
+                </div>
+            </div>
+            <div class="col-md-5 text-right">
+                <form [formGroup]="searchSsnForm" (ngSubmit)="search(searchSsnForm.value)" class="navbar-form header-search">
+                    <div class="input-group">
+                        <span class="input-group-addon search-ssn-addon">SSN/ACCT #: </span>
+                        <input formControlName="searchSsn" id="searchSsn" type="text" maxlength="9" class="form-control" placeholder="SSN/ACCT #" (ngModel)="searchSsn">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-fill btn-default"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </nav>

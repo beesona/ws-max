@@ -13,10 +13,37 @@
     overflow-x: scroll;
 }
 
-.card-content {
+.card-content, .card-footer {
     background: whitesmoke;
+}
+
+.card-content {
+    padding-bottom: 0;
+}
+
+.card-content h3, .card-content h4, .card-content h5 {
+    margin: 0.25rem 0;
+}
+
+.card-footer {
+    padding-top: 1rem;
+    border-top: 1px solid #CCC5B9;
 }
 
 .numbers {
     font-weight: 700;
+}
+
+.table-condensed {
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+}
+
+.table-condensed tbody tr td {
+    padding: 5px;
+    text-align: left;
+}
+
+.table-condensed tbody tr td:last-child {
+    text-align: right;
 }

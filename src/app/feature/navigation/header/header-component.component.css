@@ -1,3 +1,22 @@
+.navbar-header {
+    font-size: 1.4rem;
+    padding: 1rem 0;
+}
+
+.navbar-header .label, .navbar-header .btn {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+    margin-right: 0.5rem;
+    border: 1px solid #66615b;
+}
+
+.navbar-header .change-caller {
+    background: transparent;
+    color: #66615b;
+}
+
 .search-ssn-addon {
     border-radius: 20px 0 0 20px;
     background: white;

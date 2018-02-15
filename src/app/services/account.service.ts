@@ -48,7 +48,7 @@ export class AccountService {
     ).map((response: any) => {
       let accountData: IAccountData;
       if (response.body.data.length > 0){
-        accountData = response.body.data[0];
+        accountData = response.body.data;
         this.accounts.next(accountData);
         this.storedAccounts = accountData;
         return accountData;

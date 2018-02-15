@@ -1,39 +1,75 @@
 <div *ngIf="isWidget">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" *ngFor="let acct of accountData">
       <div class="card">
         <div class="card-content">
           <div class="row">
             <div class="col-xs-7">
               <div class="numbers pull-left">
-                  {{accountData.amount | currency}}
+                  {{acct?.amount | currency}}
               </div>
             </div>
             <div class="col-xs-5">
               <div class="pull-right">
                 <span class="label label-success">
-                    {{accountData.status}}
+                    {{acct?.status}}
                 </span>
               </div>
             </div>
           </div>
-          <h3 class="big-title"><small>this is a</small> {{accountData.term}} <small>year loan</small></h3>
-          <h4 class="big-title"><small>with a</small> {{accountData.interestRate}}% {{accountData.rateType}} <small>interest rate</small></h4>
-          <h5 class="big-title"><small>payments are due on the</small> {{accountData.dueDay}}th <small>day of each month</small></h5>
+          <h3 class="big-title"><small>this is a</small> {{acct?.term}} <small>year loan</small></h3>
+          <h4 class="big-title"><small>with a</small> {{acct?.interestRate}}% {{acct?.rateType}} <small>interest rate</small></h4>
+          <h5 class="big-title"><small>payments are due on the</small> {{acct?.dueDay}}th <small>day of each month</small></h5>
+          <p class="text-center"><small>margin</small> {{acct?.margin}}</p>
+          <table class="table table-condensed">
+            <tbody>
+              <tr>
+                <td>Last Updated:</td>
+                <td class="text-right">{{acct?.updatedDate | date}}</td>
+              </tr>
+              <tr>
+                <td>First Payment:</td>
+                <td class="text-right">{{acct?.firstPaymentDate | date}}</td>
+              </tr>
+              <tr>
+                <td>Disbursed on:</td>
+                <td class="text-right">{{acct?.disbursementDate | date}}</td>
+              </tr>
+              <tr>
+                <td>Created on:</td>
+                <td class="text-right">{{acct?.createdDate | date}}</td>
+              </tr>
+              <tr>
+                <td>Loan ID</td>
+                <td>{{acct?.loanId}}</td>
+              </tr>
+              <tr>
+                <td>Program ID</td>
+                <td>{{acct?.loanProgramId}}</td>
+              </tr>
+              <tr>
+                <td>Loan Reference ID</td>
+                <td>{{acct?.loanReferenceId}}</td>
+              </tr>
+              <tr>
+                <td>External Reference ID</td>
+                <td>{{acct?.externalReferenceId}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="card-footer">
-          <hr>
+        <!-- <div class="card-footer">
           <div class="footer-title">Financial Statistics</div>
           <div class="pull-right">
             <button class="btn btn-info btn-fill btn-icon btn-sm">
               <i class="ti-plus"></i>
             </button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
       <div class="col-md-12">
         <div class="card-content table-responsive table-full-width">
           <table class="table table-striped table-hover table-bordered">
@@ -74,5 +110,5 @@
           </table>
         </div>
       </div>
-    </div>  
+    </div> --> 
 </div>

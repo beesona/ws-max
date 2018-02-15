@@ -6,22 +6,38 @@
           <div class="row">
             <div class="col-xs-7">
               <div class="numbers pull-left">
-                  {{accountData?.amount | currency}}
+                {{accountData?.amount | currency}}
               </div>
             </div>
             <div class="col-xs-5">
               <div class="pull-right">
                 <span class="label label-success">
-                    {{accountData?.status}}
+                  {{accountData?.status}}
                 </span>
               </div>
             </div>
           </div>
-          <h3 class="big-title"><small>this is a</small> {{accountData?.term}} <small>year loan</small></h3>
-          <h4 class="big-title"><small>with a</small> {{accountData?.interestRate}}% {{accountData?.rateType}} <small>interest rate</small></h4>
-          <h5 class="big-title"><small>payments are due on the</small> {{accountData?.dueDay}}th <small>day of each month</small></h5>
+          <h3 class="big-title">
+            <small>this is a</small> {{accountData?.term}}
+            <small>year loan</small>
+          </h3>
+          <h4 class="big-title">
+            <small>with a</small> {{accountData?.interestRate}}% {{accountData?.rateType}}
+            <small>interest rate</small>
+          </h4>
+          <h5 class="big-title">
+            <small>payments are due on the</small> {{accountData?.dueDay}}th
+            <small>day of each month</small>
+          </h5>
         </div>
         <div class="card-footer">
+          <hr>
+          <button (click)="showDialog = !showDialog" class="btn">Open</button>
+
+          <app-dialog [(visible)]="showDialog">
+            <h1>Hello World</h1>
+            <button (click)="showDialog = !showDialog" class="btn">Close</button>
+          </app-dialog>
           <hr>
           <div class="footer-title">Financial Statistics</div>
           <div class="pull-right">
@@ -34,45 +50,45 @@
     </div>
   </div>
   <div class="row">
-      <div class="col-md-12">
-        <div class="card-content table-responsive table-full-width">
-          <table class="table table-striped table-hover table-bordered">
-            <thead>
-              <th>Loan ID</th>
-              <th>Loan Program ID</th>
-              <th>Term</th>
-              <th>Loan Amount</th>
-              <th>Interest Rate</th>
-              <th>Margin</th>
-              <th>Rate Type</th>
-              <th>Due Day</th>
-              <th>Created Date</th>
-              <th>Disbursement Date</th>
-              <th>First Payment Date</th>
-              <th>Updated Date</th>
-              <th>Status</th>
-              <th>Loan Reference ID</th>
-              <th>External Reference ID</th>
-            </thead>
-            <tr>
-              <td>{{accountData?.loanId}}</td>
-              <td>{{accountData?.loanProgramId}}</td>
-              <td>{{accountData?.term}}</td>
-              <td>{{accountData?.amount}}</td>
-              <td>{{accountData?.interestRate}}</td>
-              <td>{{accountData?.margin}}</td>
-              <td>{{accountData?.rateType}}</td>
-              <td>{{accountData?.dueDay}}</td>
-              <td>{{accountData?.createdDate | date}}</td>
-              <td>{{accountData?.disbursementDate | date}}</td>
-              <td>{{accountData?.firstPaymentDate | date}}</td>
-              <td>{{accountData?.updtedDate | date}}</td>
-              <td>{{accountData?.status}}</td>
-              <td>{{accountData?.loanReferenceId}}</td>
-              <td>{{accountData?.externalReferenceId}}</td>
-            </tr>
-          </table>
-        </div>
+    <div class="col-md-12">
+      <div class="card-content table-responsive table-full-width">
+        <table class="table table-striped table-hover table-bordered">
+          <thead>
+            <th>Loan ID</th>
+            <th>Loan Program ID</th>
+            <th>Term</th>
+            <th>Loan Amount</th>
+            <th>Interest Rate</th>
+            <th>Margin</th>
+            <th>Rate Type</th>
+            <th>Due Day</th>
+            <th>Created Date</th>
+            <th>Disbursement Date</th>
+            <th>First Payment Date</th>
+            <th>Updated Date</th>
+            <th>Status</th>
+            <th>Loan Reference ID</th>
+            <th>External Reference ID</th>
+          </thead>
+          <tr>
+            <td>{{accountData?.loanId}}</td>
+            <td>{{accountData?.loanProgramId}}</td>
+            <td>{{accountData?.term}}</td>
+            <td>{{accountData?.amount}}</td>
+            <td>{{accountData?.interestRate}}</td>
+            <td>{{accountData?.margin}}</td>
+            <td>{{accountData?.rateType}}</td>
+            <td>{{accountData?.dueDay}}</td>
+            <td>{{accountData?.createdDate | date}}</td>
+            <td>{{accountData?.disbursementDate | date}}</td>
+            <td>{{accountData?.firstPaymentDate | date}}</td>
+            <td>{{accountData?.updtedDate | date}}</td>
+            <td>{{accountData?.status}}</td>
+            <td>{{accountData?.loanReferenceId}}</td>
+            <td>{{accountData?.externalReferenceId}}</td>
+          </tr>
+        </table>
       </div>
-    </div>  
+    </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -13,6 +13,7 @@ import { PaymentHistoryComponent } from './history/payment-history/payment-histo
 import { PaymentsComponent } from './payments/payments.component';
 import { ArchwizardModule  } from 'ng2-archwizard';
 import { AccordionModule } from 'ng2-accordion';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   imports: [
@@ -32,9 +33,11 @@ import { AccordionModule } from 'ng2-accordion';
     ActivitiesComponent,
     PaymentHistoryComponent,
     ActivitiesComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    DialogComponent
   ],
   providers: [BorrowerDemographicsService],
+  schemas: [NO_ERRORS_SCHEMA],
   entryComponents: [PrimaryContactFormComponent, AccountComponent, HistoryComponent]
 })
 export class FeaturesModule { }

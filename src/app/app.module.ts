@@ -21,8 +21,6 @@ import { MessageService } from './services/message.service';
 import { PaymentsService } from './services/payments.service';
 import { ActivitiesComponent } from './feature/activities/activities/activities.component';
 import { PaymentsComponent } from './feature/payments/payments.component';
-import { ArchwizardModule  } from 'ng2-archwizard';
-import { AccordionModule } from 'ng2-accordion';
 import { ToastModule } from 'ng2-toastr';
 
 
@@ -59,8 +57,6 @@ const appRoutes: Routes = [
     HttpModule,
     FeaturesModule,
     NavigationModule,
-    ArchwizardModule,
-    AccordionModule,
     ToastModule.forRoot()
   ],
   providers: [

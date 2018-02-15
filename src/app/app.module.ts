@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { BorrowerCardComponent } from './feature/borrower-card/borrower-card.component';
 import { PrimaryContactFormComponent } from './feature/demographics/primary-contact-form/primary-contact-form.component';
@@ -23,6 +23,8 @@ import { ActivitiesComponent } from './feature/activities/activities/activities.
 import { PaymentsComponent } from './feature/payments/payments.component';
 import { ArchwizardModule  } from 'ng2-archwizard';
 import { AccordionModule } from 'ng2-accordion';
+import { ToastModule } from 'ng2-toastr';
+
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -50,6 +52,7 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
+    BrowserAnimationsModule,
     AlertModule.forRoot(),
     FormsModule,
     HttpClientModule,
@@ -57,7 +60,8 @@ const appRoutes: Routes = [
     FeaturesModule,
     NavigationModule,
     ArchwizardModule,
-    AccordionModule
+    AccordionModule,
+    ToastModule.forRoot()
   ],
   providers: [
     BorrowerDemographicsService, AccountService, HistoryNotesService, AuthenticationService, MessageService, PaymentsService],

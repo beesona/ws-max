@@ -95,136 +95,147 @@
 
 
 <div *ngIf="!isWidget" class="demo-page-container">
-
-    <div *ngIf="borrower && (borrower.addresses.length > 0 && borrower.addresses[0] != null)">
-        <h3>Addresses <input type="button" class="btn btn-success btn-sm pull-right" value="Add New" (click)="addAddress()"></h3>
+    <div class="row" *ngIf="borrower">
+        <h3>Addresses
+            <button class="btn btn-sm btn-success btn-fill" (click)="addAddress()">Add Address</button>
+        </h3>
         <hr>
-        <div class="demo-address-container" *ngFor="let address of borrower.addresses">
-            <form (ngSubmit)="saveAddress(address)">
-                <div class="row">
-                        <div class="form-col col-md-3">
-                            <label for="txtAddressLine1">Street 1</label>
-                            <input name="txtAddressLine1" [(ngModel)]="address.street1" type="text" class="form-control">
-                        </div>
-                        <div class="form-col col-md-2">
-                            <label for="txtAddressLine2">Street 2</label>
-                            <input name="txtAddressLine2" [(ngModel)]="address.street2" type="text" class="form-control">
-                        </div>
-                        <div class="form-col col-md-2">
-                            <label for="txtCity">City</label>
-                            <input name="txtCity" [(ngModel)]="address.city" type="text" class="form-control">
-                        </div>                
-                        <div class="form-col col-md-2">
-                            <label for="ddlState">State</label>
-                            <select name="ddlState" [(ngModel)]="address.state" type="text" class="form-control">
-                                <option value="">Select</option>
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="AZ">Arizona</option>
-                                <option value="AR">Arkansas</option>
-                                <option value="CA">California</option>
-                                <option value="CO">Colorado</option>
-                                <option value="CT">Connecticut</option>
-                                <option value="DE">Delaware</option>
-                                <option value="DC">District Of Columbia</option>
-                                <option value="FL">Florida</option>
-                                <option value="GA">Georgia</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="ID">Idaho</option>
-                                <option value="IL">Illinois</option>
-                                <option value="IN">Indiana</option>
-                                <option value="IA">Iowa</option>
-                                <option value="KS">Kansas</option>
-                                <option value="KY">Kentucky</option>
-                                <option value="LA">Louisiana</option>
-                                <option value="ME">Maine</option>
-                                <option value="MD">Maryland</option>
-                                <option value="MA">Massachusetts</option>
-                                <option value="MI">Michigan</option>
-                                <option value="MN">Minnesota</option>
-                                <option value="MS">Mississippi</option>
-                                <option value="MO">Missouri</option>
-                                <option value="MT">Montana</option>
-                                <option value="NE">Nebraska</option>
-                                <option value="NV">Nevada</option>
-                                <option value="NH">New Hampshire</option>
-                                <option value="NJ">New Jersey</option>
-                                <option value="NM">New Mexico</option>
-                                <option value="NY">New York</option>
-                                <option value="NC">North Carolina</option>
-                                <option value="ND">North Dakota</option>
-                                <option value="OH">Ohio</option>
-                                <option value="OK">Oklahoma</option>
-                                <option value="OR">Oregon</option>
-                                <option value="PA">Pennsylvania</option>
-                                <option value="RI">Rhode Island</option>
-                                <option value="SC">South Carolina</option>
-                                <option value="SD">South Dakota</option>
-                                <option value="TN">Tennessee</option>
-                                <option value="TX">Texas</option>
-                                <option value="UT">Utah</option>
-                                <option value="VT">Vermont</option>
-                                <option value="VA">Virginia</option>
-                                <option value="WA">Washington</option>
-                                <option value="WV">West Virginia</option>
-                                <option value="WI">Wisconsin</option>
-                                <option value="WY">Wyoming</option>
-                            </select>
-                        </div>                                
-                        <div class="form-col col-md-1">
-                            <label for="txtZip">Zip</label>
-                            <input name="txtZip"  [(ngModel)]="address.postalCode" type="text" class="form-control">
-                        </div>                
-                        <div class="form-col col-md-2">
-                            <input class="demo-btn-warn" type="button" value="Delete"  (click)="deleteAddress(address)" /> 
-                            <input class="demo-btn" type="button" value="Save" (click)="saveDemo()" /> 
-                        </div>
-                    </div>
-            </form>
+        <div class="row" *ngIf="borrower && (borrower.addresses.length > 0 && borrower.addresses[0] != null)">
+            <div class="card col-md-3" *ngFor="let address of borrower.addresses">
+                <div class="card-content">
+                    <form (ngSubmit)="saveAddress(address)">
+                        <div class="row">
+                                <div class="form-group">
+                                    <label for="txtAddressLine1">Street 1</label>
+                                    <input name="txtAddressLine1" [(ngModel)]="address.street1" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtAddressLine2">Street 2</label>
+                                    <input name="txtAddressLine2" [(ngModel)]="address.street2" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtCity">City</label>
+                                    <input name="txtCity" [(ngModel)]="address.city" type="text" class="form-control">
+                                </div>                
+                                <div class="form-group">
+                                    <label for="ddlState">State</label>
+                                    <select name="ddlState" [(ngModel)]="address.state" type="text" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="DC">District Of Columbia</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
+                                    </select>
+                                </div>                                
+                                <div class="form-group">
+                                    <label for="txtZip">Zip</label>
+                                    <input name="txtZip"  [(ngModel)]="address.postalCode" type="text" class="form-control">
+                                </div>                
+                                <div class="form-group pull-right">
+                                    <span class="demo-type" *ngIf="address.type == 'primary'">Primary Address</span>
+                                    <button class="btn btn-xs btn-info btn-fill" *ngIf="address.type == ''" (click)="makePrimary(address)">Make Primary</button>
+                                    <button class="btn btn-xs btn-danger btn-fill" (click)="deleteAddress(address)" >Delete</button> 
+                                    <button class="btn btn-xs btn-success btn-fill" (click)="saveDemo()" >Save</button> 
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div *ngIf="borrower && (borrower.phones.length > 0 && borrower.phones[0] != null)">
-        <h3>Phones <input type="button" class="btn btn-success btn-sm pull-right" value="Add New" (click)="addPhone()"></h3>
-        <hr>
-        <div class="demo-phone-container" *ngFor="let phone of borrower.phones">
-            <div class="row">
-                <form (ngSubmit)="savePhone(phone)">
-                    <div class="form-col col-sm-3">
-                            <label for="txtPhoneNumber">Phone Number</label>
-                            <input name="txtPhoneNumber" [(ngModel)]="phone.phoneNumber" type="text" class="form-control">
-                    </div>
-                    <div class="form-col col-sm-3">
-                        <label for="txtPhoneType">Phone Type</label>
-                        <input name="txtPhoneType" [(ngModel)]="phone.type" type="text" class="form-control">
-                    </div>
-                    <div class="form-col col-sm-3 pull-right">
-                            <input class="demo-btn-warn" type="button" value="Delete"  (click)="deletePhone(phone)" /> 
-                            <input class="demo-btn" type="button" value="Save" (click)="saveDemo()" /> 
-                    </div>
-                </form>          
-            </div> 
+    <div class="row" *ngIf="borrower">
+        <h3>Phones 
+            <button class="btn btn-sm btn-success btn-fill" (click)="addPhone()">Add Phone</button>
+        </h3>   
+        <hr />
+        <div class="row" *ngIf="borrower && (borrower.phones.length > 0 && borrower.phones[0] != null)">
+            <div class="card col-md-3" *ngFor="let phone of borrower.phones">
+                <div class="card-content">
+                    <form (ngSubmit)="savePhone(phone)">
+                        <div class="form-group">
+                                <label for="txtPhoneNumber">Phone Number</label>
+                                <input name="txtPhoneNumber" [(ngModel)]="phone.phoneNumber" type="text" class="form-control">
+                        </div>
+                        <div class="form-group pull-right">
+                                <span class="demo-type" *ngIf="phone.type == 'primary'">Primary Phone</span>
+                                <button class="btn btn-xs btn-info btn-fill" *ngIf="phone.type == ''" (click)="makePrimaryPhone(phone)">Make Primary</button>
+                                <button class="btn btn-xs btn-danger btn-fill" (click)="deletePhone(phone)" >Delete</button> 
+                                <button class="btn btn-xs btn-success btn-fill" (click)="saveDemo()" >Save</button>
+                        </div>
+                    </form>          
+                </div> 
+            </div>
         </div>
     </div>
-    <div  *ngIf="borrower && (borrower.emailAddresses.length > 0 && borrower.emailAddresses[0] != null)">
-        <h3>Emails <input type="button" class="btn btn-success btn-sm pull-right" value="Add New" (click)="addEmail()"></h3>
+    <div class="row" *ngIf="borrower">
+        <h3>Emails 
+            <button class="btn btn-sm btn-success btn-fill" (click)="addEmail()">Add Email</button>
+        </h3>
         <hr>
-        <div class="demo-email-container" *ngFor="let email of borrower.emailAddresses">
-            <div class="row">
-                <form (ngSubmit)="saveEmail(email)">
-                    <div class="form-col col-sm-3">
-                            <label for="txtEmailAddress">Email Address</label>
-                            <input name="txtEmailAddress"  [(ngModel)]="email.emailAddress" type="text" class="form-control">
-                    </div>
-                    <div class="form-col col-sm-3">
-                        <label for="txtEmailType">Email Type</label>
-                        <input name="txtEmailType" [(ngModel)]="email.type" type="text" class="form-control">
-                    </div>
-                    <div class="form-col col-sm-3 pull-right">
-                            <input class="demo-btn-warn" type="button" value="Delete"  (click)="deleteEmail(email)" /> 
-                            <input class="demo-btn" type="button" value="Save" (click)="saveDemo()" /> 
-                    </div>                
-                </form>  
-            </div>          
+        <div class="row" *ngIf="borrower && (borrower.emailAddresses.length > 0 && borrower.emailAddresses[0] != null)">
+            <div class="card col-md-3" *ngFor="let email of borrower.emailAddresses">
+                <div class="card-content">
+                    <form (ngSubmit)="saveEmail(email)">
+                        <div class="form-group">
+                                <label for="txtEmailAddress">Email Address</label>
+                                <input name="txtEmailAddress"  [(ngModel)]="email.emailAddress" type="text" class="form-control">
+                        </div>
+                        <div class="form-group pull-right">
+                            <span class="demo-type" *ngIf="email.type == 'primary'">Primary Email</span>
+                            <button class="btn btn-xs btn-info btn-fill" *ngIf="email.type == ''" (click)="makePrimaryEmail(email)">Make Primary</button>
+                            <button class="btn btn-xs btn-danger btn-fill" (click)="deleteEmail(email)" >Delete</button> 
+                            <button class="btn btn-xs btn-success btn-fill" (click)="saveDemo()" >Save</button>
+                        </div>                
+                    </form>  
+                </div>
+            </div>
         </div>
     </div>    
 </div>

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
+import { BorrowerDemographicsService } from './borrower/borrower-demographics.service';
+import { AccountService } from './account.service';
+import { PaymentsService } from './payments.service';
  
 @Injectable()
 export class MessageService {
@@ -13,6 +16,11 @@ export class MessageService {
   // Observable string streams
   message$ = this.message.asObservable();
   searchSsn$ = this.searchSsn.asObservable();
+
+  constructor(
+    private _acctSvc: AccountService,
+    private _paymentSvc: PaymentsService
+  ){ }
  
   // Service message commands
   setMessage(msg: any) {
@@ -22,5 +30,9 @@ export class MessageService {
   setSearchSsn(ssn: string){
     this.storedSearchSsn = ssn;
     this.searchSsn.next(ssn);
+  }
+
+  clearedStoredData(){
+
   }
 }

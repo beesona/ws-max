@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angula
 import { Subscription }   from 'rxjs/Subscription';
 import { IAddress, IBorrower, IEmailAddress, IPhone, Address, Email, Phone } from '../../../models/borrower';
 import { Subject } from 'rxjs/Subject';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-primary-contact-form',
@@ -27,7 +28,7 @@ export class PrimaryContactFormComponent implements OnInit {
   msgSvcSubscription: Subscription;
 
   constructor(private _borrSvc: BorrowerDemographicsService,
-    private _msgSvc: MessageService) {
+    private _msgSvc: MessageService, private _toastr: ToastsManager) {
     this.SetDemographics()
     }
 
@@ -79,6 +80,45 @@ export class PrimaryContactFormComponent implements OnInit {
     return emails[0];
   }
 
+  makePrimary(address: IAddress){
+    this.borrower.addresses.forEach(add => {
+      if (add.type == 'primary'){
+        add.type = '';
+      }
+    })
+    address.type = 'primary';
+    this.primaryAddress = address;
+    this.borrower.addresses.splice(this.borrower.addresses.indexOf(address), 1);
+    this.borrower.addresses.unshift(address);
+    this.saveDemo();
+  }
+
+  makePrimaryPhone(phone: IPhone){
+    this.borrower.phones.forEach(phone => {
+      if (phone.type == 'primary'){
+        phone.type = '';
+      }
+    })
+    phone.type = 'primary';
+    this.primaryPhone = phone;
+    this.borrower.phones.splice(this.borrower.phones.indexOf(phone), 1);
+    this.borrower.phones.unshift(phone);
+    this.saveDemo();
+  }
+
+  makePrimaryEmail(email: IEmailAddress){
+    this.borrower.emailAddresses.forEach(email => {
+      if (email.type == 'primary'){
+        email.type = '';
+      }
+    })
+    email.type = 'primary';
+    this.primaryEmail = email;
+    this.borrower.emailAddresses.splice(this.borrower.emailAddresses.indexOf(email), 1);
+    this.borrower.emailAddresses.unshift(email);
+    this.saveDemo();
+  }
+
   saveDemographics() {
     let addressExists = this.borrower.addresses.indexOf(this.primaryAddress);
     let phoneExists = this.borrower.phones.indexOf(this.primaryPhone);
@@ -98,6 +138,7 @@ export class PrimaryContactFormComponent implements OnInit {
     this._borrSvc.updateBorrower(this.borrower)
     .subscribe(data => retData = data);
     console.log(retData);
+    this._toastr.success("Demographic Info Saved.", 'Success!', {toastLife: 3000});
   }
 
   saveDemo(): void{
@@ -105,19 +146,31 @@ export class PrimaryContactFormComponent implements OnInit {
     let retData;
     this._borrSvc.updateBorrower(this.borrower)
     .subscribe(data => retData = data);
-    console.log('saved demo info');
+    this._toastr.success("Demographic Info Saved.", 'Success!', {toastLife: 3000});
   }
 
   addAddress(): void {
-    this.borrower.addresses.push(new Address);
+    let newAddress = new Address();
+    if (this.borrower.addresses.length <= 0){
+      newAddress.type = 'primary';
+    }
+    this.borrower.addresses.push(newAddress);
   }
 
   addPhone(): void {
-    this.borrower.phones.push(new Phone);
+    let newPhone = new Phone();
+    if (this.borrower.addresses.length <= 0){
+      newPhone.type = 'primary';
+    }
+    this.borrower.phones.push(newPhone);
   }
 
   addEmail(): void {
-    this.borrower.emailAddresses.push(new Email);
+    let newEmail = new Email();
+    if (this.borrower.emailAddresses.length <= 0){
+      newEmail.type = 'primary';
+    }
+    this.borrower.emailAddresses.push(newEmail);
   }
 
   deleteAddress(address: IAddress){

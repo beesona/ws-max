@@ -45,6 +45,30 @@ export interface IBorrower {
 export interface IBorrowerData {
     data: IBorrower;
 }
+
+export class Borrower implements IBorrower{
+    borrowerId = '';
+    tenantId = -1
+    clientId = -1;
+    firstName = '';
+    middleName = '';
+    lastName = '';
+    ssn = '';
+    dob = new Date("01-01-0001");
+    addresses =  new Array<Address>();
+    phones = new Array<Phone>();
+    emailAddresses = new Array<Email>();
+    customData = new CustomData;
+    activeMilitary = false;
+    activePrivacy = false;
+    createdDate = new Date("01-01-0001");
+    updatedDate = new Date("01-01-0001");
+    externalReferenceId = '';
+}
+
+export class CustomData implements ICustomData{
+    participantId = '';
+}
     
 export class Address implements IAddress {
     street1 = ''

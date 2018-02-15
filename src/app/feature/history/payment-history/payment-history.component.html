@@ -23,21 +23,21 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row">{{paymentData.clientId}}</th>
-                <td>{{paymentData.payerId}}</td>
-                <td>{{paymentData.payerType}}</td>
-                <td>{{paymentData.tenantId}}</td>
-                <td>{{paymentData.status}}</td>
-                <td>{{paymentData.source}}</td>
-                <td>{{paymentData.loanId}}</td>
-                <td>{{paymentData.amount}} | currency: " $"</td>
-                <td>{{paymentData.effectiveDate | date:'MM/dd/yyyy'}}</td>
-                <td>{{paymentData.externalReferenceId}}</td>
-                <td>{{paymentData.paymentType}}</td>
-                <td>{{paymentData.requestedDate | date:'MM/dd/yyyy'}}</td>
-                <td>{{paymentData.achDetails.accountType}}</td>
-                <td>{{paymentData.achDetails.bankAccount}}</td>
-                <td>{{paymentData.achDetails.routingNumber}}</td> 
+                <th scope="row">{{paymentData?.clientId}}</th>
+                <td>{{paymentData?.payerId}}</td>
+                <td>{{paymentData?.payerType}}</td>
+                <td>{{paymentData?.tenantId}}</td>
+                <td>{{paymentData?.status}}</td>
+                <td>{{paymentData?.source}}</td>
+                <td>{{paymentData?.loanId}}</td>
+                <td>{{paymentData?.amount}} | currency: " $"</td>
+                <td>{{paymentData?.effectiveDate | date:'MM/dd/yyyy'}}</td>
+                <td>{{paymentData?.externalReferenceId}}</td>
+                <td>{{paymentData?.paymentType}}</td>
+                <td>{{paymentData?.requestedDate | date:'MM/dd/yyyy'}}</td>
+                <td>{{paymentData?.achDetails.accountType}}</td>
+                <td>{{paymentData?.achDetails.bankAccount}}</td>
+                <td>{{paymentData?.achDetails.routingNumber}}</td> 
             </tr>            
         </tbody>
     </table>

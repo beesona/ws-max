@@ -13,6 +13,7 @@ import { IBorrower } from './../../models/borrower';
 })
 export class AccountComponent implements OnInit {
   
+  @Input() data: any;
   @Input() isWidget: true;
   @Input() borrower: IBorrower;
   accountSubscription: Subscription;
@@ -38,7 +39,7 @@ export class AccountComponent implements OnInit {
     })
   }
 
-  GetAccountData(){
+  GetAccountData(): void {
   this._acctService.getAccounts(this.borrower.externalReferenceId).subscribe(
     accountData => {
       if (accountData){
